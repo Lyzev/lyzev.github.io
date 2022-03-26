@@ -36,7 +36,9 @@ a:hover {
 footer {
     background: #161616;
     padding-left: 10px;
-    margin-top:auto;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 header {
