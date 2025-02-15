@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>lyzev.dev</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="style.min.css">
+</head>
+<body>
+<header class="glass fade-in">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <h1 class="text-2xl font-bold gradient-text">lyzev.dev</h1>
+        <nav class="flex-1 ml-6">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="#about" class="text-blue-500">About</a></li>
+                <li><a href="#skills" class="text-blue-500">Skills</a></li>
+                <li><a href="#interests" class="text-blue-500">Interests</a></li>
+                <li><a href="#tools" class="text-blue-500">Tools</a></li>
+                <li><a href="#os" class="text-blue-500">OS</a></li>
+                <li><a href="#projects" class="text-blue-500">Projects</a></li>
+                <li><a href="#pull-requests" class="text-blue-500">Contributions</a></li>
+                <li><a href="#activity" class="text-blue-500">Activity</a></li>
+                <li><a href="#contact" class="text-blue-500">Contact</a></li>
+                <li><a href="#flag-checker" class="text-blue-500">CTF</a></li>
+            </ul>
+        </nav>
+        <div class="flex space-x-4">
+            <a href="mailto:contact@lyzev.dev" class="text-blue-500">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/Lyzev" class="text-blue-500">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://lyzev.dev/discord" class="text-blue-500">
+                <i class="fab fa-discord"></i>
+            </a>
+            <button id="dark-mode-toggle" class="text-blue-500">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </div>
+</header>
+<main class="container mx-auto px-6 py-8">
+    <section id="about" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-user mr-2"></i> About Me
+        </h2>
+        <p class="mt-4">
+            Hi, I'm <span class="font-bold">Lyzev</span>, a software developer from Central Europe. I started
+            programming in 2020 and learned <span class="font-bold">Java</span> as my first programming language. I contribute to various open source projects on GitHub,
+            focusing on fixing bugs and adding new features. I also love reverse engineering
+            and making mods for games.
+        </p>
+    </section>
+    <section id="skills" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-code mr-2"></i> Skills
+        </h2>
+        <div class="skills-container mt-4">
+            <ul class="skills-list list-disc list-inside space-x-6">
+                <li class="flex items-center">
+                    <i class="fab fa-java mr-2"></i> Java
+                </li>
+                <li class="flex items-center">
+                    Kotlin
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-markdown mr-2"></i> Markdown
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-js mr-2"></i> JavaScript
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-python mr-2"></i> Python
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-php mr-2"></i> PHP
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-html5 mr-2"></i> HTML
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-css3-alt mr-2"></i> CSS
+                </li>
+                <li class="flex items-center">
+                    <i class="fab fa-rust mr-2"></i> Rust
+                </li>
+                <li class="flex items-center">
+                    C
+                </li>
+                <li class="flex items-center">
+                    C#
+                </li>
+                <li class="flex items-center">
+                    TypeScript
+                </li>
+                <li class="flex items-center">
+                    GLSL
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="interests" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-lightbulb mr-2"></i> Interests
+        </h2>
+        <p class="mt-4">
+            I enjoy contributing to open-source projects on <span class="font-bold">GitHub</span>,
+            learning new programming languages, and building web applications.
+            I mostly work on Java/Kotlin open-source projects.
+        </p>
+    </section>
+    <section id="tools" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-tools mr-2"></i> Tools
+        </h2>
+        <ul class="mt-4 list-disc list-inside grid grid-cols-1 md:grid-cols-2 gap-4">
+            <li class="flex items-center">
+                <i class="fas fa-terminal mr-2"></i> WinSCP
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-terminal mr-2"></i> Termius
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-network-wired mr-2"></i> Wireshark
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-code-branch mr-2"></i> Ghidra
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-bug mr-2"></i> dnSpy
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-cogs mr-2"></i> Selenium
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-tools mr-2"></i> Gradle
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-tools mr-2"></i> Maven
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-database mr-2"></i> MariaDB
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-database mr-2"></i> SQLite
+            </li>
+            <li class="flex items-center">
+                <i class="fab fa-git-alt mr-2"></i> Git
+            </li>
+            <li class="flex items-center">
+                <i class="fab fa-github mr-2"></i> GitHub
+            </li>
+            <li class="flex items-center">
+                <i class="fab fa-gitlab mr-2"></i> GitLab
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-shield-alt mr-2"></i> Qodana
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-vial mr-2"></i> JUnit5
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-cube mr-2"></i> Fabric Modding
+            </li>
+        </ul>
+    </section>
+    <section id="os" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center"><i class="fas fa-desktop mr-2"></i> OS</h2>
+        <p class="mt-4">
+            I use a dual-boot setup with Windows and Linux.
+            I am using <i class="fab fa-fedora mr-1"></i><span class="font-bold">Fedora</span> as my daily go-to OS.
+        </p>
+    </section>
+    <section id="projects" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-project-diagram mr-2"></i> Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+            <div class="card repo glass p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">Schizoid</h3>
+                    <p class="mt-2">
+                        Elevate your Minecraft gameplay with this free and feature-rich client
+                        built with Fabric API and utilizing mixin-based injection techniques.
+                    </p>
+                    <div class="mt-4">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <span class="star-count" data-repo="SchizoidDevelopment/schizoid">0</span>
+                        </span>
+                        <span class="forks ml-4">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="fork-count" data-repo="SchizoidDevelopment/schizoid">0</span>
+                        </span>
+                    </div>
+                </div>
+                <a href="https://github.com/SchizoidDevelopment/schizoid" class="text-blue-500 mt-4 inline-block">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="card repo glass p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">Kratos</h3>
+                    <p class="mt-2">
+                        A flexible Kotlin library for seamless management and tracking of customizable
+                        application settings.
+                    </p>
+                    <div class="mt-4">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <span class="star-count" data-repo="SchizoidDevelopment/kratos">0</span>
+                        </span>
+                        <span class="forks ml-4">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="fork-count" data-repo="SchizoidDevelopment/kratos">0</span>
+                        </span>
+                    </div>
+                </div>
+                <a href="https://github.com/SchizoidDevelopment/kratos" class="text-blue-500 mt-4 inline-block">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="card repo glass p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">Piko</h3>
+                    <p class="mt-2">
+                        Effortlessly manage events in your application with this lightweight
+                        and flexible event management library.
+                    </p>
+                    <div class="mt-4">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <span class="star-count" data-repo="SchizoidDevelopment/piko">0</span>
+                        </span>
+                        <span class="forks ml-4">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="fork-count" data-repo="SchizoidDevelopment/piko">0</span>
+                        </span>
+                    </div>
+                </div>
+                <a href="https://github.com/SchizoidDevelopment/piko" class="text-blue-500 mt-4 inline-block">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="card repo glass p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">Horse Power</h3>
+                    <p class="mt-2">
+                        Ever wonder if your horse is more of a galloping champion or a pasture potato?
+                    </p>
+                    <div class="mt-4">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <span class="star-count" data-repo="Lyzev/HorsePower">0</span>
+                        </span>
+                        <span class="forks ml-4">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="fork-count" data-repo="Lyzev/HorsePower">0</span>
+                        </span>
+                    </div>
+                </div>
+                <a href="https://github.com/Lyzev/HorsePower" class="text-blue-500 mt-4 inline-block">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="card repo glass p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">Perfectly Balanced Horses</h3>
+                    <p class="mt-2">Make horses useful again!</p>
+                    <div class="mt-4">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <span class="star-count"
+                                  data-repo="Lyzev/PerfectlyBalancedHorses"
+                            >0</span>
+                        </span>
+                        <span class="forks ml-4">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="fork-count"
+                                  data-repo="Lyzev/PerfectlyBalancedHorses"
+                            >0</span>
+                        </span>
+                    </div>
+                </div>
+                <a href="https://github.com/Lyzev/PerfectlyBalancedHorses" class="text-blue-500 mt-4 inline-block">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+            <div class="card repo glass p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold">Aero</h3>
+                    <p class="mt-2">
+                        A lightweight and intuitive Kotlin GUI library for seamless multiplatform
+                        development, inspired by Jetpack Compose.
+                    </p>
+                    <div class="mt-4">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <span class="star-count" data-repo="SchizoidDevelopment/aero">0</span>
+                        </span>
+                        <span class="forks ml-4">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="fork-count" data-repo="SchizoidDevelopment/aero">0</span>
+                        </span>
+                    </div>
+                </div>
+                <a href="https://github.com/SchizoidDevelopment/aero" class="text-blue-500 mt-4 inline-block">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="pull-requests" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-code-merge mr-2"></i> Open Source Contributions
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+            <div class="card glass p-4 flex flex-col justify-between">
+                <div>
+                    <a href="https://github.com/SpaiR/imgui-java/pull/320" class="text-xl font-semibold text-blue-500">
+                        PR #320 on imgui-java
+                    </a>
+                    <p class="mt-2">
+                        Enhance OpenGL compatibility checks for sampler objects.
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <span class="text-gray-700 text-sm">
+                        Status: Merged · Date: Feb 2, 2025
+                    </span>
+                </div>
+            </div>
+            <div class="card glass p-4 flex flex-col justify-between">
+                <div>
+                    <a href="https://github.com/cabaletta/baritone/pull/4636"
+                       class="text-xl font-semibold text-blue-500">
+                        PR #4636 on baritone
+                    </a>
+                    <p class="mt-2">
+                        Added settings to control block placement in fluid sources and flowing fluids.
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <span class="text-gray-700 text-sm">
+                        Status: Merged · Date: Feb 8, 2025
+                    </span>
+                </div>
+            </div>
+            <div class="card glass p-4 flex flex-col justify-between">
+                <div>
+                    <a href="https://github.com/CCBlueX/LiquidBounce/pull/5348"
+                       class="text-xl font-semibold text-blue-500">
+                        PR #5348 on LiquidBounce
+                    </a>
+                    <p class="mt-2">
+                        Fixed blur feedback loop.
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <span class="text-gray-700 text-sm">
+                        Status: Merged · Date: Jan 19, 2025
+                    </span>
+                </div>
+            </div>
+            <div class="card glass p-4 flex flex-col justify-between">
+                <div>
+                    <a href="https://github.com/MeteorDevelopment/meteor-client/pull/3671"
+                       class="text-xl font-semibold text-blue-500">
+                        PR #3671 on meteor-client
+                    </a>
+                    <p class="mt-2">
+                        Add Dual Kawase Blur (aka. Dual Filter).
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <span class="text-gray-700 text-sm">
+                        Status: Merged · Date: May 21, 2023
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="activity" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-chart-line mr-2"></i> Activity
+        </h2>
+        <p class="mt-4">
+            Here's my GitHub activity chart for the last year:
+        </p>
+        <img class="mt-4" src="http://ghchart.rshah.org/Lyzev" loading="lazy" alt="Lyzev's Github chart" title="Lyzev's GitHub activity chart"/>
+    </section>
+    <section id="contact" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-envelope mr-2"></i> Contact
+        </h2>
+        <p class="mt-4">
+            Reach me via
+            <a href="mailto:contact@lyzev.dev" class="text-blue-500"><i class="fas fa-envelope"></i> Mail</a>,
+            <a href="https://github.com/Lyzev" class="text-blue-500"><i class="fab fa-github"></i> GitHub</a>,
+            or
+            <a href="https://lyzev.dev/discord" class="text-blue-500"><i class="fab fa-discord"></i> Discord</a>.
+        </p>
+    </section>
+    <section id="flag-checker" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold flex items-center">
+            <i class="fas fa-flag mr-2"></i> Capture the Flag
+        </h2>
+        <p class="mt-4">
+            I have hidden a flag somewhere on this page. Can you find it?
+        </p>
+        <!--1. Clue:-->
+        <!--Hidden in layers, shaping the view,-->
+        <!--I define the look but stay out of sight too.-->
+        <p class="mt-4">Enter the flag to check if it is correct:</p>
+        <input type="text" id="flag-input" class="mt-2 p-2 text-black border rounded" placeholder="Enter flag here">
+        <br>
+        <button id="check-flag" class="mt-2 p-2 bg-blue-500 text-white rounded">Check Flag</button>
+        <p id="flag-result" class="mt-4"></p>
+    </section>
+</main>
+<footer class="bg-white shadow mt-8 glass fade-in">
+    <div class="container mx-auto px-6 py-3">
+        <p class="text-center text-gray-600">
+            &copy; 2025 Lyzev. All rights reserved.
+        </p>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" defer></script>
+<script src="scripts.min.js" defer></script>
+</body>
+</html>
