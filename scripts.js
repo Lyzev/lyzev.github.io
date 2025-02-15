@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('suspicious', 'NC4gQ2x1ZSAoc3R5bGVzdXh4KToKSW4gcGxhaW4gc2lnaHQsIGJ1dCBub3Qgd2hhdCB5b3UgdGhpbmssClRoZSBpbWFnZSBoaWRlcyBtb3JlIHRoYW4geW91IGJsaW5rLg==');
-    fetch('https://cors-anywhere.herokuapp.com/suspicious', {
+    fetch('https://lyzev.dev/suspicious', {
         headers: {
             'Suspicious': 'My4gQ2x1ZToKU3RvcmVkIGluIHNpbGVuY2UsIGhpZGRlbiBkZWVwLApBIHNlY3JldCByZXN0cyB3aGVyZSBkYXRhIHNsZWVwcy4='
         }
