@@ -36,83 +36,67 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const loadingScreen = document.getElementById('loading-screen');
-    const loadingText = document.querySelector('.loading-text');
-    const languages = ["Hola", "Bonjour", "Hallo", "Ciao", "Hello"];
-    let index = 0;
-    const minDisplayTime = 400 * languages.length;
-    const startTime = Date.now();
-
-    function changeText() {
-        loadingText.style.opacity = '0';
-        setTimeout(() => {
-            loadingText.textContent = languages[index];
-            loadingText.style.opacity = '1';
-            index = (index + 1) % languages.length;
-        }, 100);
-    }
-
-    const interval = setInterval(changeText, 400);
-
-    window.addEventListener('load', function () {
-        const elapsedTime = Date.now() - startTime;
-        const remainingTime = minDisplayTime - elapsedTime;
-
-        if (sessionStorage.getItem('pageLoadedBefore')) {
-            clearInterval(interval);
-            loadingScreen.style.opacity = '0';
-            setTimeout(function () {
-                loadingScreen.style.display = 'none';
-            }, 500);
-        } else {
-            setTimeout(function () {
-                clearInterval(interval);
-                loadingScreen.style.opacity = '0';
-                setTimeout(function () {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, Math.max(remainingTime, 0));
-            sessionStorage.setItem('pageLoadedBefore', 'true');
-        }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const skillsList = document.querySelector('.skills-list');
-    let scrollAmount = 0;
-    const scrollStep = 2;
-    const scrollInterval = 50;
-    const pauseDuration = 1000;
+    let scrollLeft = 0;
     let direction = 1;
+    let lastTimestamp = 0;
+    const scrollSpeed = 80;
+    const pauseDuration = 300; // in milliseconds
     let isPaused = false;
-
-    function autoScroll() {
-        if (isPaused) {
-            setTimeout(autoScroll, scrollInterval);
-            return;
-        }
-        scrollAmount += scrollStep * direction;
-        if (scrollAmount >= skillsList.scrollWidth - skillsList.clientWidth || scrollAmount <= 0) {
-            direction *= -1;
-            setTimeout(autoScroll, pauseDuration);
-            return;
-        }
-        skillsList.scrollTo({
-            left: scrollAmount, behavior: 'smooth'
-        });
-        setTimeout(autoScroll, scrollInterval);
-    }
+    let pauseEndTime = 0;
+    let isHovered = false;
 
     skillsList.addEventListener('mouseenter', () => {
-        isPaused = true;
+        isHovered = true;
     });
 
     skillsList.addEventListener('mouseleave', () => {
-        isPaused = false;
+        isHovered = false;
+        requestAnimationFrame(autoScroll);
     });
 
-    setTimeout(autoScroll, scrollInterval);
+    function autoScroll(timestamp) {
+        if (isHovered) {
+            lastTimestamp = timestamp;
+            requestAnimationFrame(autoScroll);
+            return;
+        }
+
+        if (isPaused) {
+            if (timestamp >= pauseEndTime) {
+                isPaused = false;
+            } else {
+                lastTimestamp = timestamp;
+                requestAnimationFrame(autoScroll);
+                return;
+            }
+        }
+
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const delta = (timestamp - lastTimestamp) / 1000;
+        lastTimestamp = timestamp;
+
+        scrollLeft += scrollSpeed * direction * delta;
+        const maxScrollLeft = skillsList.scrollWidth - skillsList.clientWidth;
+
+        if (scrollLeft >= maxScrollLeft) {
+            scrollLeft = maxScrollLeft;
+            direction = -1;
+            isPaused = true;
+            pauseEndTime = timestamp + pauseDuration;
+        } else if (scrollLeft <= 0) {
+            scrollLeft = 0;
+            direction = 1;
+            isPaused = true;
+            pauseEndTime = timestamp + pauseDuration;
+        }
+
+        skillsList.scrollLeft = scrollLeft;
+        requestAnimationFrame(autoScroll);
+    }
+
+    requestAnimationFrame(autoScroll);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
