@@ -6,12 +6,15 @@
     <title>lyzev.dev</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="glass fade-in">
+<div id="loading-screen" class="loading-screen">
+    <div class="loading-text">Hello</div>
+</div>
+<header class="glass">
     <div class="container mx-auto px-6 py-3 flex justify-between items-center">
         <h1 class="text-2xl font-bold gradient-text">lyzev.dev</h1>
         <nav class="flex-1 ml-6 hidden lg:block">
@@ -45,7 +48,7 @@
     </div>
 </header>
 <main class="container mx-auto px-6 py-8">
-    <section id="about" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="about" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-user mr-2"></i> About Me
         </h2>
@@ -56,7 +59,7 @@
             and making mods for games.
         </p>
     </section>
-    <section id="interests" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="interests" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-lightbulb mr-2"></i> Interests
         </h2>
@@ -65,12 +68,12 @@
             I mostly work on Java/Kotlin open-source projects.
         </p>
     </section>
-    <section id="projects" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="projects" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-project-diagram mr-2"></i> Projects
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-            <div class="card repo glass p-4 flex flex-col justify-between">
+            <div class="card repo glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <h3 class="text-xl font-semibold">Schizoid</h3>
                     <p class="mt-2">
@@ -92,7 +95,7 @@
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
-            <div class="card repo glass p-4 flex flex-col justify-between">
+            <div class="card repo glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <h3 class="text-xl font-semibold">Kratos</h3>
                     <p class="mt-2">
@@ -114,7 +117,7 @@
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
-            <div class="card repo glass p-4 flex flex-col justify-between">
+            <div class="card repo glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <h3 class="text-xl font-semibold">Piko</h3>
                     <p class="mt-2">
@@ -136,7 +139,7 @@
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
-            <div class="card repo glass p-4 flex flex-col justify-between">
+            <div class="card repo glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <h3 class="text-xl font-semibold">Horse Power</h3>
                     <p class="mt-2">
@@ -157,7 +160,7 @@
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
-            <div class="card repo glass p-4 flex flex-col justify-between">
+            <div class="card repo glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <h3 class="text-xl font-semibold">Perfectly Balanced Horses</h3>
                     <p class="mt-2">Make horses useful again!</p>
@@ -180,7 +183,7 @@
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
-            <div class="card repo glass p-4 flex flex-col justify-between">
+            <div class="card repo glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <h3 class="text-xl font-semibold">Aero</h3>
                     <p class="mt-2">
@@ -204,12 +207,12 @@
             </div>
         </div>
     </section>
-    <section id="pull-requests" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="pull-requests" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-code-merge mr-2"></i> Open Source Contributions
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-            <div class="card glass p-4 flex flex-col justify-between">
+            <div class="card glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <a href="https://github.com/SpaiR/imgui-java/pull/320" class="text-xl font-semibold text-blue-500">
                         PR #320 on imgui-java
@@ -224,7 +227,7 @@
                     </span>
                 </div>
             </div>
-            <div class="card glass p-4 flex flex-col justify-between">
+            <div class="card glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <a href="https://github.com/cabaletta/baritone/pull/4636"
                        class="text-xl font-semibold text-blue-500">
@@ -240,7 +243,7 @@
                     </span>
                 </div>
             </div>
-            <div class="card glass p-4 flex flex-col justify-between">
+            <div class="card glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <a href="https://github.com/CCBlueX/LiquidBounce/pull/5348"
                        class="text-xl font-semibold text-blue-500">
@@ -256,7 +259,7 @@
                     </span>
                 </div>
             </div>
-            <div class="card glass p-4 flex flex-col justify-between">
+            <div class="card glass p-4 flex flex-col justify-between animate-on-scroll">
                 <div>
                     <a href="https://github.com/MeteorDevelopment/meteor-client/pull/3671"
                        class="text-xl font-semibold text-blue-500">
@@ -274,7 +277,7 @@
             </div>
         </div>
     </section>
-    <section id="activity" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="activity" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-chart-line mr-2"></i> Activity
         </h2>
@@ -283,7 +286,7 @@
         </p>
         <img class="mt-4" src="http://ghchart.rshah.org/Lyzev" loading="lazy" alt="Lyzev's Github chart" title="Lyzev's GitHub activity chart"/>
     </section>
-    <section id="skills" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="skills" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-code mr-2"></i> Skills
         </h2>
@@ -331,7 +334,7 @@
             </ul>
         </div>
     </section>
-    <section id="tools" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="tools" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-tools mr-2"></i> Tools
         </h2>
@@ -386,14 +389,14 @@
             </li>
         </ul>
     </section>
-    <section id="os" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="os" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center"><i class="fas fa-desktop mr-2"></i> OS</h2>
         <p class="mt-4">
             I use a dual-boot setup with Windows and Linux.
             I am using <i class="fab fa-fedora mr-1"></i><span class="font-bold">Fedora</span> as my daily go-to OS.
         </p>
     </section>
-    <section id="contact" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="contact" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-envelope mr-2"></i> Contact
         </h2>
@@ -405,7 +408,7 @@
             <a href="https://lyzev.dev/discord" class="text-blue-500"><i class="fab fa-discord"></i> Discord</a>.
         </p>
     </section>
-    <section id="flag-checker" class="my-8 glass fade-in p-6 scroll-animation max-w-4xl mx-auto">
+    <section id="flag-checker" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-flag mr-2"></i> Capture the Flag
         </h2>
@@ -416,13 +419,11 @@
         <!--Hidden in layers, shaping the view,-->
         <!--I define the look but stay out of sight too.-->
         <p class="mt-4">Enter the flag to check if it is correct:</p>
-        <input type="text" id="flag-input" class="mt-2 p-2 text-black border rounded" placeholder="Enter flag here">
-        <br>
-        <button id="check-flag" class="mt-2 p-2 bg-blue-500 text-white rounded">Check Flag</button>
+        <input type="text" id="flag-input" class="mt-2 p-2 text-black border rounded" placeholder="Enter flag here"> <button id="check-flag" class="mt-2 p-2 bg-blue-500 text-white rounded"><i class="fas fa-right-to-bracket"></i></button>
         <p id="flag-result" class="mt-4"></p>
     </section>
 </main>
-<footer class="bg-white shadow mt-8 glass fade-in">
+<footer class="bg-white shadow mt-8 glass">
     <div class="container mx-auto px-6 py-3">
         <p class="text-center text-gray-600">
             &copy; 2025 Lyzev. All rights reserved.
@@ -430,6 +431,6 @@
     </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" defer></script>
-<script src="scripts.min.js" defer></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>
