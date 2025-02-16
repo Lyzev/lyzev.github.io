@@ -74,6 +74,30 @@
                 pauseEndTime = timestamp + pauseDuration;
             }
             skillsList.scrollLeft = scrollLeft;
+
+            // Fade in/out effect
+            const items = skillsList.querySelectorAll('li');
+            items.forEach((item) => {
+                const itemLeft = item.offsetLeft;
+                const itemRight = itemLeft + item.clientWidth;
+                const listLeft = skillsList.scrollLeft;
+                const listRight = listLeft + skillsList.clientWidth;
+
+                if (direction === 1) {
+                    if (itemLeft > listLeft && itemLeft < listRight) {
+                        item.classList.add('visible');
+                    } else {
+                        item.classList.remove('visible');
+                    }
+                } else {
+                    if (itemRight > listLeft && itemRight < listRight) {
+                        item.classList.add('visible');
+                    } else {
+                        item.classList.remove('visible');
+                    }
+                }
+            });
+
             requestAnimationFrame(autoScroll);
         }
         requestAnimationFrame(autoScroll);

@@ -23,13 +23,13 @@ body {
 body.dark-mode {
     background: conic-gradient(
             from 0deg,
-            #2c3e50 0deg,
-            #744caf 60deg,
-            #4b6a6e 120deg,
-            #383665 180deg,
-            #2c2f50 240deg,
-            #4ca1af 300deg,
-            #2c3e50 360deg
+            #1a1a2e 0deg,
+            #16213e 60deg,
+            #0f3460 120deg,
+            #53354a 180deg,
+            #903749 240deg,
+            #e84545 300deg,
+            #1a1a2e 360deg
     );
     color: #f2f2f7;
 }
@@ -44,31 +44,13 @@ body.dark-mode .glass {
 }
 
 body.dark-mode .gradient-text {
-    background: linear-gradient(45deg, #6f57bc, #3e4e8c);
+    background: linear-gradient(45deg, #8a2be2, #1e90ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-body.dark-mode .text-blue-500 {
-    background: linear-gradient(45deg, #06b6d4, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
-
-body.dark-mode .text-blue-500:hover {
-    background: linear-gradient(45deg, #0ea5e9, #2563eb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: underline;
-}
-
-body.dark-mode .text-gray-600 {
-    color: #cccccc;
-}
-
-body.dark-mode .text-gray-900 {
-    color: #f5f5f5;
+body.dark-mode .text-blue:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 
 body.dark-mode .loading-screen {
@@ -173,7 +155,16 @@ main .glass:hover {
     display: none;
 }
 
-.text-blue-500 {
+.skills-list li {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.skills-list li.visible {
+    opacity: 1;
+}
+
+.text-blue {
     background: linear-gradient(45deg, #06b6d4, #3b82f6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -182,10 +173,11 @@ main .glass:hover {
     transition: background 0.3s ease, text-shadow 0.3s ease;
 }
 
-.text-blue-500:hover {
+.text-blue:hover {
     background: linear-gradient(45deg, #0ea5e9, #2563eb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #flag-input {
@@ -195,7 +187,7 @@ main .glass:hover {
 }
 
 #flag-input:focus {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 #check-flag {
@@ -212,11 +204,11 @@ main .glass:hover {
 
 #check-flag:hover {
     background: linear-gradient(45deg, #0ea5e9, #2563eb);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 #check-flag:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
 }
 
 /*
