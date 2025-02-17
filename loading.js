@@ -1,9 +1,22 @@
 (function () {
     const loadingScreen = document.getElementById('loading-screen');
     const loadingText = document.querySelector('.loading-text');
-    const languages = ["Hola", "Bonjour", "Hallo", "Ciao", "Hello"];
-    let index = 0;
-    const minDisplayTime = 400 * languages.length;
+    const languages = [
+        "Hello",     // English
+        "Hola",      // Spanish
+        "Bonjour",   // French
+        "Hallo",     // German
+        "Ciao",      // Italian
+        "Привет",    // Russian
+        "你好",      // Chinese
+        "Olá",       // Portuguese
+        "مرحبا",     // Arabic
+        "नमस्ते",    // Hindi
+        "こんにちは", // Japanese
+        "안녕하세요"  // Korean
+    ];
+    let index = 1;
+    const minDisplayTime = 400 * 5;
     const startTime = Date.now();
 
     function changeText() {
