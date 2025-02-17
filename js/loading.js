@@ -1,4 +1,10 @@
 (function () {
+    const body = document.body;
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+
     const loadingScreen = document.getElementById('loading-screen');
     const loadingText = document.querySelector('.loading-text');
     const languages = [
