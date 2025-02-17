@@ -43,7 +43,11 @@
             pauseEndTime = 0,
             isHovered = false;
 
-        skillsList.addEventListener('mouseenter', () => (isHovered = true));
+        skillsList.addEventListener('mouseenter', () => {
+            isHovered = true;
+            const items = skillsList.querySelectorAll('li');
+            items.forEach((item) => item.classList.add('visible'));
+        });
         skillsList.addEventListener('mouseleave', () => {
             isHovered = false;
             requestAnimationFrame(autoScroll);
