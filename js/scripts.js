@@ -1,4 +1,117 @@
 (() => {
+    class RepoCard extends HTMLElement {
+        connectedCallback() {
+            const title = this.getAttribute('title');
+            const description = this.getAttribute('description');
+            const repo = this.getAttribute('repo');
+            const url = this.getAttribute('url');
+
+            this.classList.add('card', 'repo', 'glass', 'p-4', 'flex', 'flex-col', 'justify-between', 'animate-on-scroll');
+
+            const innerDiv = document.createElement('div');
+
+            const titleElem = document.createElement('h3');
+            titleElem.classList.add('text-xl', 'font-semibold');
+            titleElem.textContent = title;
+            innerDiv.appendChild(titleElem);
+
+            const descElem = document.createElement('p');
+            descElem.classList.add('mt-2');
+            descElem.textContent = description;
+            innerDiv.appendChild(descElem);
+
+            const statsDiv = document.createElement('div');
+            statsDiv.classList.add('mt-4');
+
+            const starsSpan = document.createElement('span');
+            starsSpan.classList.add('stars');
+            const starIcon = document.createElement('i');
+            starIcon.classList.add('fas', 'fa-star');
+            const starCount = document.createElement('span');
+            starCount.classList.add('star-count');
+            starCount.dataset.repo = repo;
+            starCount.textContent = '0';
+            starsSpan.appendChild(starIcon);
+            starsSpan.appendChild(document.createTextNode(' '));
+            starsSpan.appendChild(starCount);
+            statsDiv.appendChild(starsSpan);
+
+            const forksSpan = document.createElement('span');
+            forksSpan.classList.add('forks', 'ml-4');
+            const forkIcon = document.createElement('i');
+            forkIcon.classList.add('fas', 'fa-code-branch');
+            const forkCount = document.createElement('span');
+            forkCount.classList.add('fork-count');
+            forkCount.dataset.repo = repo;
+            forkCount.textContent = '0';
+            forksSpan.appendChild(forkIcon);
+            forksSpan.appendChild(document.createTextNode(' '));
+            forksSpan.appendChild(forkCount);
+            statsDiv.appendChild(forksSpan);
+
+            innerDiv.appendChild(statsDiv);
+            this.appendChild(innerDiv);
+
+            const linkElem = document.createElement('a');
+            linkElem.href = url;
+            linkElem.classList.add('text-blue', 'mt-4', 'inline-block');
+            const linkIcon = document.createElement('i');
+            linkIcon.classList.add('fab', 'fa-github');
+            linkElem.appendChild(linkIcon);
+            linkElem.appendChild(document.createTextNode(' View on GitHub'));
+            this.appendChild(linkElem);
+
+            fetch(`assets/github/${repo}.json`)
+                .then((response) => response.json())
+                .then((data) => {
+                    starCount.textContent = data.stargazers_count ?? 0;
+                    forkCount.textContent = data.forks_count ?? 0;
+                })
+                .catch((error) =>
+                    console.error('Error fetching repo data:', error)
+                );
+        }
+    }
+
+    customElements.define('repo-card', RepoCard);
+
+    class PrCard extends HTMLElement {
+        connectedCallback() {
+            const title = this.getAttribute('title');
+            const description = this.getAttribute('description');
+            const url = this.getAttribute('url');
+            const status = this.getAttribute('status');
+            const date = this.getAttribute('date');
+
+            this.classList.add('card', 'glass', 'p-4', 'flex', 'flex-col', 'justify-between', 'animate-on-scroll');
+
+            const innerDiv = document.createElement('div');
+
+            const titleElem = document.createElement('a');
+            titleElem.href = url;
+            titleElem.classList.add('text-xl', 'font-semibold', 'text-blue');
+            titleElem.textContent = title;
+            innerDiv.appendChild(titleElem);
+
+            const descElem = document.createElement('p');
+            descElem.classList.add('mt-2');
+            descElem.textContent = description;
+            innerDiv.appendChild(descElem);
+
+            const statusDiv = document.createElement('div');
+            statusDiv.classList.add('mt-4');
+            const statusElem = document.createElement('span');
+            statusElem.classList.add('text-gray', 'text-sm');
+            statusElem.textContent = `Status: ${status} · Date: ${date}`;
+            statusDiv.appendChild(statusElem);
+
+            this.appendChild(innerDiv);
+            this.appendChild(statusDiv);
+        }
+    }
+
+    customElements.define('pr-card', PrCard);
+
     // Flag verification and "Enter" key support
     const correctHash = '9ad6987fb7ad109ff0ec65a6ca22293f76ffa5db208d7394b73b1d7e6025f01f';
     const flagInput = document.getElementById('flag-input');
@@ -111,56 +224,6 @@
     document.getElementById('scroll-to-top').addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Fetch and cache GitHub repo data
-    const repoCards = document.querySelectorAll('.repo');
-    if (repoCards.length) {
-        const cacheKey = 'lyzevRepoCache';
-        const cacheLifetime = 5 * 60 * 1000; // 5 minutes
-        const cachedData = JSON.parse(localStorage.getItem(cacheKey) || '{}');
-        const lastFetch = cachedData.lastFetch || 0;
-        const now = Date.now();
-
-        const applyCachedData = () => {
-            repoCards.forEach((card) => {
-                const starElem = card.querySelector('.star-count');
-                const forkElem = card.querySelector('.fork-count');
-                if (!starElem || !forkElem) return;
-                const repoName = starElem.dataset.repo;
-                if (cachedData[repoName]) {
-                    starElem.textContent = cachedData[repoName].stars;
-                    forkElem.textContent = cachedData[repoName].forks;
-                }
-            });
-        };
-
-        if (now - lastFetch < cacheLifetime) {
-            applyCachedData();
-        } else {
-            repoCards.forEach((card) => {
-                const starElem = card.querySelector('.star-count');
-                const forkElem = card.querySelector('.fork-count');
-                if (!starElem || !forkElem) return;
-
-                const repo = starElem.dataset.repo;
-                fetch(`https://api.github.com/repos/${repo}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        cachedData[repo] = {
-                            stars: data.stargazers_count ?? 0,
-                            forks: data.forks_count ?? 0,
-                        };
-                        starElem.textContent = cachedData[repo].stars;
-                        forkElem.textContent = cachedData[repo].forks;
-                        cachedData.lastFetch = now;
-                        localStorage.setItem(cacheKey, JSON.stringify(cachedData));
-                    })
-                    .catch((error) =>
-                        console.error('Error fetching repo data:', error)
-                    );
-            });
-        }
-    }
 
     // Dark mode toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');

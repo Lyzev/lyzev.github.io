@@ -12,12 +12,29 @@ jobs:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
       contents: write
+    env:
+      REPOS: |
+        'SchizoidDevelopment/schizoid'
+        'SchizoidDevelopment/kratos'
+        'SchizoidDevelopment/piko'
+        'Lyzev/HorsePower'
+        'Lyzev/PerfectlyBalancedHorses'
+        'SchizoidDevelopment/aero'
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
       - name: Download GitHub activity chart
         run: curl -o assets/img/Lyzev.svg https://ghchart.rshah.org/Lyzev
+      - name: Fetch repository data
+        run: |
+          mkdir -p assets/github
+          for repo in $REPOS; do
+            repo_name=$(echo $repo | tr -d "'")
+            curl -H "Accept: application/vnd.github.v3+json" \
+                 https://api.github.com/repos/$repo_name | jq '{stargazers_count, forks_count}' \
+                 > assets/github/$(basename $repo_name).json
+          done
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update GitHub activity chart'
