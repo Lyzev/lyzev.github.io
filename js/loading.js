@@ -63,6 +63,8 @@
 
     loadingText.addEventListener('animationiteration', changeText);
 
+    body.style.overflow = 'hidden';
+
     window.addEventListener('load', function () {
         const elapsedTime = Date.now() - startTime;
         const remainingTime = minDisplayTime - elapsedTime;
@@ -72,6 +74,7 @@
             loadingScreen.style.opacity = '0';
             setTimeout(function () {
                 loadingScreen.style.display = 'none';
+                body.style.overflow = 'auto';
             }, 500);
         } else {
             setTimeout(function () {
@@ -79,6 +82,7 @@
                 loadingScreen.style.opacity = '0';
                 setTimeout(function () {
                     loadingScreen.style.display = 'none';
+                    body.style.overflow = 'auto';
                 }, 500);
             }, Math.max(remainingTime, 0));
             sessionStorage.setItem('pageLoadedBefore', 'true');
