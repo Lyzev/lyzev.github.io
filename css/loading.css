@@ -29,7 +29,6 @@ body.dark-mode .loading-screen {
 
 .loading-text {
     font-size: 4rem;
-    font-family: 'Open Sans', sans-serif;
     animation: pulse 1.5s infinite;
     opacity: 1;
 }
