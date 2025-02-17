@@ -22,19 +22,15 @@
         "안녕하세요"  // Korean
     ];
     let index = 1;
-    const minDisplayTime = 400 * 5;
+    const minDisplayTime = 500 * 5;
     const startTime = Date.now();
 
     function changeText() {
-        loadingText.style.opacity = '0';
-        setTimeout(() => {
-            loadingText.textContent = languages[index];
-            loadingText.style.opacity = '1';
-            index = (index + 1) % languages.length;
-        }, 100);
+        loadingText.textContent = languages[index];
+        index = (index + 1) % languages.length;
     }
 
-    const interval = setInterval(changeText, 400);
+    const interval = setInterval(changeText, 500);
 
     window.addEventListener('load', function () {
         const elapsedTime = Date.now() - startTime;
