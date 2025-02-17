@@ -180,6 +180,10 @@ main .glass:hover {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+#scroll-to-top {
+    cursor: pointer;
+}
+
 #flag-input {
     outline: none;
     transition: box-shadow 0.3s ease;

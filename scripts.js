@@ -107,6 +107,11 @@
         requestAnimationFrame(autoScroll);
     }
 
+    // Scroll to top button
+    document.getElementById('scroll-to-top').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     // Fetch and cache GitHub repo data
     const repoCards = document.querySelectorAll('.repo');
     if (repoCards.length) {
