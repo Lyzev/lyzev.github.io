@@ -50,7 +50,7 @@
     ];
     let index = 1;
     const timePerLanguage = 800;
-    const minDisplayTime = timePerLanguage * 5;
+    const minDisplayTime = timePerLanguage * 4;
     const startTime = Date.now();
 
     function changeText(event) {
