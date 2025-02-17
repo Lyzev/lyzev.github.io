@@ -8,10 +8,8 @@ on:
 jobs:
   update-chart:
     runs-on: ubuntu-latest
-
+    name: Update GitHub Activity Chart
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
       - name: Download GitHub activity chart
         run: curl -o assets/img/Lyzev.svg https://ghchart.rshah.org/Lyzev
       - name: Commit & Push
