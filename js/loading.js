@@ -22,7 +22,7 @@
         "안녕하세요"  // Korean
     ];
     let index = 1;
-    const timePerLanguage = 600;
+    const timePerLanguage = 500;
     const minDisplayTime = timePerLanguage * 5;
     const startTime = Date.now();
 
