@@ -27,7 +27,6 @@
     const startTime = Date.now();
 
     function changeText(event) {
-        console.log(event);
         if (event.animationName !== 'morph') {
             return;
         }
