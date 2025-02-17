@@ -22,7 +22,8 @@
         "안녕하세요"  // Korean
     ];
     let index = 1;
-    const minDisplayTime = 500 * 5;
+    const timePerLanguage = 600;
+    const minDisplayTime = timePerLanguage * 5;
     const startTime = Date.now();
 
     function changeText() {
@@ -30,7 +31,7 @@
         index = (index + 1) % languages.length;
     }
 
-    const interval = setInterval(changeText, 500);
+    const interval = setInterval(changeText, timePerLanguage);
 
     window.addEventListener('load', function () {
         const elapsedTime = Date.now() - startTime;
