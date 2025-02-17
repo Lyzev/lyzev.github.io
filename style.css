@@ -49,6 +49,10 @@ body.dark-mode .gradient-text {
     -webkit-text-fill-color: transparent;
 }
 
+body.dark-mode .text-gray {
+    color: #d1d1d6;
+}
+
 body.dark-mode .text-blue:hover {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
@@ -162,6 +166,10 @@ main .glass:hover {
 
 .skills-list li.visible {
     opacity: 1;
+}
+
+.text-gray {
+    color: #3a3a3c;
 }
 
 .text-blue {
