@@ -1,0 +1,25 @@
+name: Update GitHub Activity Chart
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-chart:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download GitHub activity chart
+        run: curl -o assets/img/Lyzev.svg https://ghchart.rshah.org/Lyzev
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add assets/img/Lyzev.svg
+          git commit -m 'Update GitHub activity chart'
+          git push origin master
