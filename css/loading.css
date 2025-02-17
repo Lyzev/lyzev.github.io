@@ -42,6 +42,7 @@ body.dark-mode .loading-screen {
 
 .loading-text {
     font-size: 4rem;
+    line-height: 1;
     animation: morph 0.8s infinite;
     opacity: 1;
 }
