@@ -12,14 +12,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Download GitHub activity chart
         run: curl -o assets/img/Lyzev.svg https://ghchart.rshah.org/Lyzev
-
-      - name: Commit and push changes
+      - name: Commit & Push
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add assets/img/Lyzev.svg
-          git commit -m 'Update GitHub activity chart'
-          git push origin master
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A .
+          git commit -m "Update GitHub activity chart"
+          git push
