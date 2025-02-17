@@ -27,17 +27,21 @@ body.dark-mode .loading-screen {
     opacity: 1;
 }
 
-.loading-text {
-    font-size: 4rem;
-    animation: wobble 1.5s infinite;
-    opacity: 1;
-}
-
-@keyframes wobble {
+@keyframes morph {
     0%, 100% {
+        opacity: 0;
+        filter: blur(5px);
         transform: scale(1);
     }
     50% {
+        opacity: 1;
+        filter: blur(0);
         transform: scale(1.1);
     }
+}
+
+.loading-text {
+    font-size: 4rem;
+    animation: morph 0.8s infinite;
+    opacity: 1;
 }

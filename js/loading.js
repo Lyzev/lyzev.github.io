@@ -22,30 +22,34 @@
         "안녕하세요"  // Korean
     ];
     let index = 1;
-    const timePerLanguage = 500;
+    const timePerLanguage = 800;
     const minDisplayTime = timePerLanguage * 5;
     const startTime = Date.now();
 
-    function changeText() {
+    function changeText(event) {
+        console.log(event);
+        if (event.animationName !== 'morph') {
+            return;
+        }
         loadingText.textContent = languages[index];
         index = (index + 1) % languages.length;
     }
 
-    const interval = setInterval(changeText, timePerLanguage);
+    loadingText.addEventListener('animationiteration', changeText);
 
     window.addEventListener('load', function () {
         const elapsedTime = Date.now() - startTime;
         const remainingTime = minDisplayTime - elapsedTime;
 
         if (sessionStorage.getItem('pageLoadedBefore')) {
-            clearInterval(interval);
+            loadingText.removeEventListener('animationend', changeText);
             loadingScreen.style.opacity = '0';
             setTimeout(function () {
                 loadingScreen.style.display = 'none';
             }, 500);
         } else {
             setTimeout(function () {
-                clearInterval(interval);
+                loadingText.removeEventListener('animationend', changeText);
                 loadingScreen.style.opacity = '0';
                 setTimeout(function () {
                     loadingScreen.style.display = 'none';
