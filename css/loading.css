@@ -33,6 +33,10 @@ body.dark-mode .loading-screen {
         filter: blur(5px);
         transform: scale(1);
     }
+    35%, 65% {
+        opacity: 1;
+        filter: blur(0);
+    }
     50% {
         opacity: 1;
         filter: blur(0);
