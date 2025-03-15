@@ -149,9 +149,9 @@ main .glass:hover {
 
 body.dark-mode .highlight::before {
     border-image: conic-gradient(from var(--a),
-    #59800d, #85b33b, #b9d468, #0d5980,
-    #2d86b3, #800d59, #b33b8b, #e66a17,
-    #e69317, #e6bc17, #59800d) 1;
+    #364d08, #5f802a, #8ca14f, #08364d,
+    #206080, #4d0836, #802a63, #b35212,
+    #b37212, #b39212, #364d08) 1;
 }
 
 @keyframes a {
