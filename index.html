@@ -67,6 +67,12 @@
             animation: morph 0.8s infinite;
             opacity: 1;
         }
+
+        @property --a {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
     </style>
 </head>
 <body>
@@ -203,7 +209,7 @@
     </div>
 </header>
 <main class="container mx-auto px-6 py-8">
-    <section id="about" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll">
+    <section id="about" class="my-8 glass p-6 max-w-4xl mx-auto animate-on-scroll highlight">
         <h2 class="text-2xl font-semibold flex items-center">
             <i class="fas fa-user mr-2"></i> About Me
         </h2>
@@ -233,7 +239,8 @@
                     title="Schizoid"
                     description="Elevate your Minecraft gameplay with this free and feature-rich client built with Fabric API and utilizing mixin-based injection techniques."
                     repo="schizoid"
-                    url="https://github.com/SchizoidDevelopment/schizoid">
+                    url="https://github.com/SchizoidDevelopment/schizoid"
+                    highlight>
             </repo-card>
             <repo-card
                     title="Kratos"
@@ -277,7 +284,8 @@
                     description="Enhance OpenGL compatibility checks for sampler objects."
                     url="https://github.com/SpaiR/imgui-java/pull/320"
                     status="Merged"
-                    date="Feb 2, 2025">
+                    date="Feb 2, 2025"
+                    highlight>
             </pr-card>
             <pr-card
                     title="PR #4636 on baritone"
@@ -287,18 +295,19 @@
                     date="Feb 8, 2025">
             </pr-card>
             <pr-card
+                    title="PR #3671 on meteor-client"
+                    description="Add Dual Kawase Blur (aka. Dual Filter)."
+                    url="https://github.com/MeteorDevelopment/meteor-client/pull/3671"
+                    status="Merged"
+                    date="May 21, 2023"
+                    highlight>
+            </pr-card>
+            <pr-card
                     title="PR #5348 on LiquidBounce"
                     description="Fixed blur feedback loop."
                     url="https://github.com/CCBlueX/LiquidBounce/pull/5348"
                     status="Merged"
                     date="Jan 19, 2025">
-            </pr-card>
-            <pr-card
-                    title="PR #3671 on meteor-client"
-                    description="Add Dual Kawase Blur (aka. Dual Filter)."
-                    url="https://github.com/MeteorDevelopment/meteor-client/pull/3671"
-                    status="Merged"
-                    date="May 21, 2023">
             </pr-card>
         </div>
     </section>

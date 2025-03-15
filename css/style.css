@@ -57,12 +57,12 @@ body.dark-mode {
     background: conic-gradient(
             from 0deg,
             #1a1a2e 0deg,
-            #16213e 60deg,
-            #0f3460 120deg,
-            #53354a 180deg,
+            #1f264d 60deg,
+            #0f2233 120deg,
+            #993d3d 300deg,
+            #1a1a2e 360deg,
             #903749 240deg,
-            #e84545 300deg,
-            #1a1a2e 360deg
+            #542245 180deg
     );
 }
 
@@ -72,7 +72,6 @@ body.dark-mode .bg-white {
 
 body.dark-mode .glass {
     background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 body.dark-mode .gradient-text {
@@ -110,7 +109,6 @@ header {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -132,6 +130,34 @@ main .glass:hover {
 .card:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.highlight {
+    overflow: hidden;
+}
+
+.highlight::before {
+    position: absolute;
+    z-index: -1;
+    inset: -1em;
+    border: solid 1em;
+    border-image: conic-gradient(from var(--a), #669900, #99cc33, #ccee66, #006699, #3399cc, #990066, #cc3399, #ff6600, #ff9900, #ffcc00, #669900) 1;
+    filter: blur(0.75em);
+    animation: a 4s linear infinite;
+    content: '';
+}
+
+body.dark-mode .highlight::before {
+    border-image: conic-gradient(from var(--a),
+    #59800d, #85b33b, #b9d468, #0d5980,
+    #2d86b3, #800d59, #b33b8b, #e66a17,
+    #e69317, #e6bc17, #59800d) 1;
+}
+
+@keyframes a {
+    to {
+        --a: 1turn ;
+    }
 }
 
 .gradient-text {

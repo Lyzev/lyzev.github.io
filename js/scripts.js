@@ -5,8 +5,10 @@
             const description = this.getAttribute('description');
             const repo = this.getAttribute('repo');
             const url = this.getAttribute('url');
+            const highlight = this.getAttribute('highlight');
 
             this.classList.add('card', 'repo', 'glass', 'p-4', 'flex', 'flex-col', 'justify-between', 'animate-on-scroll');
+            if (highlight !== null) this.classList.add('highlight');
 
             const innerDiv = document.createElement('div');
 
@@ -82,8 +84,10 @@
             const url = this.getAttribute('url');
             const status = this.getAttribute('status');
             const date = this.getAttribute('date');
+            const highlight = this.getAttribute('highlight');
 
             this.classList.add('card', 'glass', 'p-4', 'flex', 'flex-col', 'justify-between', 'animate-on-scroll');
+            if (highlight !== null) this.classList.add('highlight');
 
             const innerDiv = document.createElement('div');
 
