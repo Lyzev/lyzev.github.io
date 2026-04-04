@@ -43,7 +43,7 @@ function useRepoStats(repoPath: string) {
           return parsed.stats;
         }
       } catch {
-        // Ignore parsing errors
+        // ignore
       }
     }
     return null;
@@ -135,7 +135,9 @@ function App() {
         try {
           const parsed = JSON.parse(cached);
           if (Date.now() - parsed.timestamp < 15 * 60 * 1000) return;
-        } catch {}
+        } catch {
+          // ignore
+        }
       }
       try {
         const res = await fetch(`https://api.github.com/repos/${repoPath}`);
@@ -147,7 +149,9 @@ function App() {
             stats: { stars: data.stargazers_count, forks: data.forks_count }
           }));
         }
-      } catch {}
+      } catch {
+        // ignore
+      }
     })).finally(() => {
       statsLoadedRef.current = true;
     });
