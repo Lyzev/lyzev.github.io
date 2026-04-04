@@ -1,0 +1,291 @@
+/*
+ * This file is part of https://github.com/Lyzev/lyzev.github.io.
+ *
+ * Copyright (c) 2026. Lyzev
+ *
+ * Piko is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Piko is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with Piko. If not, see https://www.gnu.org/licenses/agpl-3.0.en.html.
+ */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px 0;
+  animation: fadeIn 1s ease-in-out;
+  background-color: #fbfbfd;
+}
+.hero-section {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 45px;
+}
+.intro-box {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 40px 48px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+}
+.intro-legend {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d1d1f;
+  padding: 0 16px;
+  margin: 0 auto;
+  letter-spacing: -0.015em;
+}
+.intro-text {
+  font-size: 21px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1d1d1f;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.015em;
+}
+.name-super {
+  font-size: 11px;
+  vertical-align: super;
+  color: #86868b;
+  font-weight: 600;
+}
+.contact-info {
+  margin-top: 32px;
+  font-size: 19px;
+  color: #515154;
+  text-align: center;
+}
+.contact-info a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+.projects-section {
+  max-width: 840px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 45px;
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 0;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #1d1d1f;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.project-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+}
+.highlight-card {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 640px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .highlight-card {
+    grid-column: 1 / -1;
+  }
+}
+.project-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+  color: #1d1d1f;
+}
+.project-description {
+  font-size: 17px;
+  color: #86868b;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  font-weight: 400;
+  margin: 0;
+}
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.repo-stats {
+  color: #86868b;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.view-link {
+  color: #0066cc;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+.project-card:hover .view-link {
+  opacity: 1;
+}
+.view-link::after {
+  content: '›';
+  font-size: 20px;
+  line-height: 1;
+  margin-left: 4px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.project-card:hover .view-link::after {
+  transform: translateX(4px);
+}
+.pr-card .project-title {
+  font-size: 20px;
+}
+.pr-meta {
+  color: #86868b;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pr-status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.pr-status.merged {
+  background-color: rgba(142, 68, 173, 0.1);
+  color: #8e44ad;
+}
+.app-footer {
+  margin-top: auto;
+  padding: 40px 20px 40px;
+  width: 100%;
+  text-align: center;
+  color: #86868b;
+  font-size: 14px;
+}
+.app-footer p {
+  margin: 6px 0;
+}
+.legal-links a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+.legal-links a:hover {
+  text-decoration: underline;
+}
+body {
+  margin: 0;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fbfbfd;
+  color: #1d1d1f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fbfbfd;
+}
+.loader-text {
+  font-size: clamp(45px, 10vw, 135px);
+  font-weight: 500;
+  color: #1d1d1f;
+  animation: blurCycle 0.8s ease-in-out forwards;
+}
+@keyframes blurCycle {
+  0% {
+    transform: scale(0.8);
+    filter: blur(8px);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.1);
+    filter: blur(0);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.1);
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    filter: blur(8px);
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+* {
+  box-sizing: border-box;
+}
