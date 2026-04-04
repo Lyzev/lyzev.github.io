@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along with Piko. If not, see https://www.gnu.org/licenses/agpl-3.0.en.html.
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 const greetings = [
@@ -122,31 +122,77 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [index, setIndex] = useState(0);
-  const [displayGreetings] = useState<string[]>(() => {
-    const others = [...greetings.slice(1)].sort(() => 0.5 - Math.random());
-    return [...others.slice(0, 4), greetings[0]];
-  });
+  const [loadingText, setLoadingText] = useState("");
+  const [loadingKey, setLoadingKey] = useState(0);
+  const statsLoadedRef = useRef(false);
 
   useEffect(() => {
-    if (!isLoading || displayGreetings.length === 0) return;
-    const interval = setInterval(() => {
-      setIndex((prev) => {
-        if (prev >= displayGreetings.length - 1) {
-          setIsLoading(false);
-          return prev;
+    const repos = ["SchizoidDevelopment/schizoid", "SchizoidDevelopment/kratos", "SchizoidDevelopment/piko"];
+    Promise.allSettled(repos.map(async (repoPath) => {
+      const cacheKey = `gh-repo-stats-${repoPath}`;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (Date.now() - parsed.timestamp < 15 * 60 * 1000) return;
+        } catch {}
+      }
+      try {
+        const res = await fetch(`https://api.github.com/repos/${repoPath}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.stargazers_count !== undefined && data.forks_count !== undefined) {
+          localStorage.setItem(cacheKey, JSON.stringify({
+            timestamp: Date.now(),
+            stats: { stars: data.stargazers_count, forks: data.forks_count }
+          }));
         }
-        return prev + 1;
-      });
-    }, 800);
-    return () => clearInterval(interval);
-  }, [isLoading, displayGreetings]);
+      } catch {}
+    })).finally(() => {
+      statsLoadedRef.current = true;
+    });
+  }, []);
 
-  if (isLoading || displayGreetings.length === 0) {
+  useEffect(() => {
+    let tick = 0;
+    let lastText = "";
+
+    const setWord = (isEnding = false) => {
+      if (isEnding) {
+        lastText = greetings[0];
+      } else {
+        const available = greetings.slice(1).filter(g => g !== lastText);
+        lastText = available[Math.floor(Math.random() * available.length)];
+      }
+      setLoadingText(lastText);
+      setLoadingKey(k => k + 1);
+    };
+
+    setWord();
+    tick++;
+
+    const interval = setInterval(() => {
+      if (tick >= 4 && statsLoadedRef.current) {
+        if (lastText === greetings[0]) {
+           setIsLoading(false);
+           clearInterval(interval);
+        } else {
+           setWord(true);
+        }
+      } else {
+        setWord();
+        tick++;
+      }
+    }, 800);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (isLoading) {
     return (
       <div className="loader-container">
-        <div key={index} className="loader-text">
-          {displayGreetings[index] || ""}
+        <div key={loadingKey} className="loader-text">
+          {loadingText}
         </div>
       </div>
     );

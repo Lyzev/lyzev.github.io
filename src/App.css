@@ -32,22 +32,20 @@
   margin-bottom: 45px;
 }
 .intro-box {
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: none;
   border-radius: 20px;
   padding: 40px 48px;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+  background-color: #ffffff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 }
 .intro-legend {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 600;
   color: #1d1d1f;
   padding: 0 16px;
   margin: 0 auto;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 .intro-text {
   font-size: 21px;
@@ -62,18 +60,18 @@
   font-size: 11px;
   vertical-align: super;
   color: #86868b;
-  font-weight: 600;
+  font-weight: 500;
 }
 .contact-info {
   margin-top: 32px;
   font-size: 19px;
-  color: #515154;
+  color: #86868b;
   text-align: center;
 }
 .contact-info a {
   color: #0066cc;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
 }
 .contact-info a:hover {
   text-decoration: underline;
@@ -88,10 +86,10 @@
 }
 .section-title {
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0;
   letter-spacing: -0.02em;
-  text-align: center;
+  text-align: left;
   color: #1d1d1f;
 }
 .cards-grid {
@@ -102,14 +100,14 @@
 .project-card {
   background-color: #ffffff;
   border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 30px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   text-decoration: none;
   color: inherit;
   position: relative;
@@ -117,14 +115,14 @@
   text-align: left;
 }
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   text-decoration: none;
 }
 .highlight-card {
   grid-column: span 2;
-  background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 @media (max-width: 640px) {
   .cards-grid {
@@ -136,7 +134,7 @@
 }
 .project-title {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.015em;
   margin: 0 0 12px;
   color: #1d1d1f;
@@ -144,7 +142,7 @@
 .project-description {
   font-size: 17px;
   color: #86868b;
-  line-height: 1.47059;
+  line-height: 1.5;
   letter-spacing: -0.022em;
   font-weight: 400;
   margin: 0;
@@ -193,6 +191,7 @@
 }
 .pr-card .project-title {
   font-size: 20px;
+  font-weight: 600;
 }
 .pr-meta {
   color: #86868b;
@@ -215,7 +214,7 @@
 }
 .app-footer {
   margin-top: auto;
-  padding: 40px 20px 40px;
+  padding: 60px 20px 40px;
   width: 100%;
   text-align: center;
   color: #86868b;
