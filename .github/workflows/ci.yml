@@ -23,4 +23,3 @@ jobs:
       run: npm run lint
     - name: Test build step
       run: npm run build
-
