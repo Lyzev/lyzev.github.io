@@ -286,7 +286,7 @@ function App() {
             url="https://github.com/SchizoidDevelopment/kratos"
           />
           <RepoCard
-            title="PerfectlyBalancedHorses"
+            title="PBH"
             description="A Minecraft server plugin that improves horse breeding by boosting and balancing speed, jump, and health stats."
             repoPath="Lyzev/PerfectlyBalancedHorses"
             url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
