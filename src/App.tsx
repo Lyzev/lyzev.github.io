@@ -74,7 +74,7 @@ function useRepoStats(repoPath: string) {
 
 function RepoCard({ title, description, repoPath, url, highlight }: { title: string, description: string, repoPath: string, url: string, highlight?: boolean }) {
   const stats = useRepoStats(repoPath);
-  const iconUrl = `https://github.com/${repoPath}/blob/master/.idea/icon.png?raw=true`;
+  const iconUrl = `https://raw.githubusercontent.com/${repoPath}/refs/heads/master/.idea/icon.png`;
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer" className={`project-card ${highlight ? 'highlight-card' : ''}`}>
