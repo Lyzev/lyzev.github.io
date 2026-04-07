@@ -22,6 +22,7 @@
   --color-surface-hover: #ffffff;
   --color-text-main: #1d1d1f;
   --color-text-secondary: rgba(0, 0, 0, 0.6);
+  --color-text-footer: rgba(0, 0, 0, 0.72);
 
   --color-blue: #0071e3;
   --color-link: #0066cc;
@@ -301,7 +302,7 @@ a.view-link:hover {
 }
 
 .app-footer a {
-  color: var(--color-text-main);
+  color: var(--color-text-footer);
   text-decoration: none;
   transition: color 0.2s ease;
 }
