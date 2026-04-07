@@ -205,7 +205,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <main className="section-dark">
+      <main className="section">
         <h1 className="hero-title">Lyzev</h1>
         <p className="hero-subtitle">
           Hi, I'm Lyzev<sup className="name-super">⎡Бен⎤</sup>, a software developer from Central Europe. I started programming in 2020 and learned Java as my first programming language.
@@ -218,7 +218,7 @@ function App() {
         </p>
       </main>
 
-      <section className="section-light">
+      <section className="section">
         <h2 className="section-title">Projects</h2>
         <div className="cards-grid">
           <RepoCard
@@ -243,7 +243,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section-dark">
+      <section className="section">
         <h2 className="section-title">Open Source Contributions</h2>
         <div className="cards-grid pr-grid">
           <PRCard
