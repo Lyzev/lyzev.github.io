@@ -85,7 +85,7 @@ body {
 @keyframes loader-word-transition {
   0% {
     opacity: 0;
-    filter: blur(20px);
+    filter: blur(24px);
     transform: scale(0.75);
   }
   30% {
@@ -100,7 +100,7 @@ body {
   }
   100% {
     opacity: 0;
-    filter: blur(20px);
+    filter: blur(24px);
     transform: scale(0.75);
   }
 }
