@@ -206,7 +206,7 @@ function App() {
   return (
     <div className="app-container">
       <main className="section">
-        <h1 className="hero-title">Lyzev</h1>
+        <h1 className="hero-title">"ABOUT ME"</h1>
         <p className="hero-subtitle">
           Hi, I'm Lyzev<sup className="name-super">⎡Бен⎤</sup>, a software developer from Central Europe. I started programming in 2020 and learned Java as my first programming language.
         </p>
@@ -219,7 +219,7 @@ function App() {
       </main>
 
       <section className="section">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title">"PROJECTS"</h2>
         <div className="cards-grid">
           <RepoCard
             title="Schizoid"
@@ -244,7 +244,7 @@ function App() {
       </section>
 
       <section className="section">
-        <h2 className="section-title">Open Source Contributions</h2>
+        <h2 className="section-title">"OPEN SOURCE CONTRIBUTIONS"</h2>
         <div className="cards-grid pr-grid">
           <PRCard
             title="PR #320 on imgui-java"
