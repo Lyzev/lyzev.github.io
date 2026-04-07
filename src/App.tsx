@@ -272,10 +272,21 @@ function App() {
       </section>
 
       <footer className="app-footer">
-        <p>&copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
-        <p className="legal-links">
-          Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a> (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy</a>)
-        </p>
+        <div className="app-footer-inner">
+          <div className="footer-left">
+            <p>Copyright &copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
+          </div>
+          
+          <div className="footer-center">
+            <a href="https://docs.github.com/en/site-policy/privacy-policies">Privacy Policy</a>
+            <span className="footer-separator">|</span>
+            <a href="https://www.gnu.org/licenses/agpl-3.0.html">Terms of Use</a>
+          </div>
+          
+          <div className="footer-right">
+            <p>Europe</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
