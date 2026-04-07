@@ -137,7 +137,14 @@ function App() {
   const statsLoadedRef = useRef(false);
 
   useEffect(() => {
-    const repos = ["SchizoidDevelopment/schizoid", "SchizoidDevelopment/kratos", "SchizoidDevelopment/piko"];
+    const repos = [
+      "SchizoidDevelopment/schizoid",
+      "Lyzev/PerfectlyBalancedHorses",
+      "Lyzev/SchummelPartie",
+      "Lyzev/HorsePower",
+      "SchizoidDevelopment/kratos",
+      "SchizoidDevelopment/piko"
+    ];
     Promise.allSettled(repos.map(async (repoPath) => {
       const cacheKey = `gh-repo-stats-${repoPath}`;
       const cached = localStorage.getItem(cacheKey);
@@ -231,11 +238,29 @@ function App() {
         <h2 className="section-title">"PROJECTS"</h2>
         <div className="cards-grid">
           <RepoCard
+            title="PerfectlyBalancedHorses"
+            description="A horse management project focused on keeping every race setup perfectly balanced and fun."
+            repoPath="Lyzev/PerfectlyBalancedHorses"
+            url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
+          />
+          <RepoCard
             title="Schizoid"
             description="Elevate your Minecraft gameplay with this free and feature-rich client built with Fabric API and utilizing mixin-based injection techniques."
             repoPath="SchizoidDevelopment/schizoid"
             url="https://github.com/SchizoidDevelopment/schizoid"
             highlight={true}
+          />
+          <RepoCard
+            title="SchummelPartie"
+            description="A lightweight game-focused project from Lyzev featuring streamlined mechanics and clean structure."
+            repoPath="Lyzev/SchummelPartie"
+            url="https://github.com/Lyzev/SchummelPartie/"
+          />
+          <RepoCard
+            title="HorsePower"
+            description="A horsepower-themed project from Lyzev focused on speed, structure, and practical implementation."
+            repoPath="Lyzev/HorsePower"
+            url="https://github.com/Lyzev/HorsePower/"
           />
           <RepoCard
             title="Kratos"

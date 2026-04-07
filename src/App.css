@@ -78,7 +78,30 @@ body {
   line-height: 1.07;
   letter-spacing: -0.28px;
   color: var(--color-text-main);
-  transition: opacity 0.3s ease;
+  animation: loader-word-transition 0.8s ease-in-out;
+}
+
+@keyframes loader-word-transition {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.92);
+  }
+  35% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  65% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.92);
+  }
 }
 
 .section {
