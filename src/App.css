@@ -245,7 +245,7 @@ a.view-link:hover {
 }
 
 a.view-link:hover {
-  text-decoration: underline !important;
+  text-decoration: none !important;
 }
 
 .contact-info {
