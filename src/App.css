@@ -16,275 +16,249 @@
  * You should have received a copy of the GNU General Public License along with Piko. If not, see https://www.gnu.org/licenses/agpl-3.0.en.html.
  */
 
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 20px 0;
-  animation: fadeIn 1s ease-in-out;
-  background-color: #fbfbfd;
+:root {
+  --color-black: #000000;
+  --color-light-gray: #f5f5f7;
+  --color-text-dark: #1d1d1f;
+  --color-text-light: #ffffff;
+  --color-text-secondary: rgba(0, 0, 0, 0.8);
+  
+  --color-blue: #0071e3;
+  --color-link-blue: #0066cc;
+  --color-link-dark: #2997ff;
+  --color-focus: #0071e3;
+  
+  --color-surface-dark: #272729;
+  --color-surface-light: #ffffff;
+  
+  --shadow-main: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
 }
-.hero-section {
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 45px;
-}
-.intro-box {
-  border: none;
-  border-radius: 20px;
-  padding: 40px 48px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-}
-.intro-legend {
-  font-size: 28px;
-  font-weight: 600;
-  color: #1d1d1f;
-  padding: 0 16px;
-  margin: 0 auto;
-  letter-spacing: -0.02em;
-}
-.intro-text {
-  font-size: 21px;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #1d1d1f;
-  margin: 0;
-  text-align: center;
-  letter-spacing: -0.015em;
-}
-.name-super {
-  font-size: 11px;
-  vertical-align: super;
-  color: #86868b;
-  font-weight: 500;
-}
-.contact-info {
-  margin-top: 32px;
-  font-size: 19px;
-  color: #86868b;
-  text-align: center;
-}
-.contact-info a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 400;
-}
-.contact-info a:hover {
-  text-decoration: underline;
-}
-.projects-section {
-  max-width: 840px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 45px;
-}
-.section-title {
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 0;
-  letter-spacing: -0.02em;
-  text-align: left;
-  color: #1d1d1f;
-}
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-.project-card {
-  background-color: #ffffff;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-}
-.project-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  text-decoration: none;
-}
-.highlight-card {
-  grid-column: span 2;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-@media (max-width: 640px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-  .highlight-card {
-    grid-column: 1 / -1;
-  }
-}
-.project-title {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  margin: 0 0 12px;
-  color: #1d1d1f;
-}
-.project-description {
-  font-size: 17px;
-  color: #86868b;
-  line-height: 1.5;
-  letter-spacing: -0.022em;
-  font-weight: 400;
-  margin: 0;
-}
-.project-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-.repo-stats {
-  color: #86868b;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.view-link {
-  color: #0066cc;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-}
-.project-card:hover .view-link {
-  opacity: 1;
-}
-.view-link::after {
-  content: '›';
-  font-size: 20px;
-  line-height: 1;
-  margin-left: 4px;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.project-card:hover .view-link::after {
-  transform: translateX(4px);
-}
-.pr-card .project-title {
-  font-size: 20px;
-  font-weight: 600;
-}
-.pr-meta {
-  color: #86868b;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.pr-status {
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-.pr-status.merged {
-  background-color: rgba(142, 68, 173, 0.1);
-  color: #8e44ad;
-}
-.app-footer {
-  margin-top: auto;
-  padding: 60px 20px 40px;
-  width: 100%;
-  text-align: center;
-  color: #86868b;
-  font-size: 14px;
-}
-.app-footer p {
-  margin: 6px 0;
-}
-.legal-links a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 500;
-}
-.legal-links a:hover {
-  text-decoration: underline;
-}
+
 body {
   margin: 0;
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #fbfbfd;
-  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: var(--color-black);
+  color: var(--color-text-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .loader-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #fbfbfd;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--color-black);
 }
+
 .loader-text {
-  font-size: clamp(45px, 10vw, 135px);
-  font-weight: 500;
-  color: #1d1d1f;
-  animation: blurCycle 0.8s ease-in-out forwards;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  color: var(--color-text-light);
+  transition: opacity 0.3s ease;
 }
-@keyframes blurCycle {
-  0% {
-    transform: scale(0.8);
-    filter: blur(8px);
-    opacity: 0;
-  }
-  30% {
-    transform: scale(1.1);
-    filter: blur(0);
-    opacity: 1;
-  }
-  70% {
-    transform: scale(1.1);
-    filter: blur(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.8);
-    filter: blur(8px);
-    opacity: 0;
-  }
+
+.section-dark {
+  background-color: var(--color-black);
+  color: var(--color-text-light);
+  padding: 120px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+.section-light {
+  background-color: var(--color-light-gray);
+  color: var(--color-text-dark);
+  padding: 120px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-* {
-  box-sizing: border-box;
+
+.hero-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  text-align: center;
+  margin: 0 0 24px 0;
+}
+
+.hero-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: 0.196px;
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto 40px auto;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.name-super {
+  font-size: 0.5em;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+
+.section-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.10;
+  text-align: center;
+  margin: 0 0 60px 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: var(--color-surface-dark);
+  border-radius: 12px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.section-light .project-card {
+  background-color: var(--color-surface-light);
+  box-shadow: var(--shadow-main);
+}
+
+.project-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+  margin: 0 0 12px 0;
+}
+
+.project-description {
+  font-size: 14px;
+  line-height: 1.47;
+  letter-spacing: -0.224px;
+  margin: 0 0 24px 0;
+  opacity: 0.8;
+}
+
+.project-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.repo-stats, .pr-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  letter-spacing: -0.12px;
+  opacity: 0.6;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pr-status {
+  font-weight: 600;
+}
+
+.pr-status.merged {
+  color: #a371f7;
+}
+
+.view-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-link-dark);
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid var(--color-link-dark);
+  border-radius: 980px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.section-light .view-link {
+  color: var(--color-link-blue);
+  border-color: var(--color-link-blue);
+}
+
+.view-link:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-blue);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: 980px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0077ed;
+  text-decoration: none;
+}
+
+.contact-info {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  align-items: center;
+}
+
+.app-footer {
+  background-color: var(--color-light-gray);
+  color: var(--color-text-secondary);
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.47;
+  letter-spacing: -0.12px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  margin: 0;
+}
+
+.app-footer p {
+  margin: 0 0 8px 0;
+}
+
+.app-footer a {
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+.app-footer a:hover {
+  text-decoration: underline;
 }
