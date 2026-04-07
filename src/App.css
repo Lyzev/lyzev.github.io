@@ -208,6 +208,7 @@ body {
 .view-link {
   display: inline-flex;
   align-items: center;
+  background-color: transparent;
   color: var(--color-link);
   font-size: 14px;
   font-weight: 400;
@@ -218,9 +219,11 @@ body {
   transition: all 0.2s ease;
 }
 
-.project-card:hover .view-link {
-  text-decoration: underline !important;
-  background-color: var(--color-link-hover-bg);
+.project-card:hover .view-link,
+a.view-link:hover {
+  background-color: var(--color-link);
+  color: #ffffff;
+  text-decoration: none !important;
 }
 
 .btn-primary {
@@ -272,6 +275,7 @@ a.view-link:hover {
 .app-footer a {
   color: var(--color-text-main);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .app-footer a:hover {
