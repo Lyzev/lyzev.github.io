@@ -42,6 +42,7 @@
     --color-surface-hover: #272729;
     --color-text-main: #ffffff;
     --color-text-secondary: rgba(255, 255, 255, 0.6);
+    --color-text-footer: rgba(255, 255, 255, 0.72);
 
     --color-link: #2997ff;
     --color-link-hover-bg: rgba(41, 151, 255, 0.1);
