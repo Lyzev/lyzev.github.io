@@ -96,7 +96,7 @@ function RepoCard({ title, description, repoPath, url, highlight }: { title: str
             {stats ? stats.forks : '-'}
           </span>
         </span>
-        <span className="view-link">View project &gt;</span>
+        <span className="view-link">View project</span>
       </div>
     </a>
   );
@@ -115,7 +115,7 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
           <span>•</span>
           <span className="pr-date">{date}</span>
         </span>
-        <span className="view-link">View PR &gt;</span>
+        <span className="view-link">View PR</span>
       </div>
     </a>
   );
@@ -213,8 +213,8 @@ function App() {
 
         <p className="contact-info">
           <a href="mailto:contact@lyzev.dev" className="btn-primary">Mail</a>
-          <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub &gt;</a>
-          <a href="https://lyzev.dev/discord" target="_blank" rel="noopener noreferrer" className="view-link">Discord &gt;</a>
+          <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub</a>
+          <a href="https://lyzev.dev/discord" target="_blank" rel="noopener noreferrer" className="view-link">Discord</a>
         </p>
       </main>
 
