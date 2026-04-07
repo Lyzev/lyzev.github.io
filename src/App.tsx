@@ -239,7 +239,7 @@ function App() {
         <div className="cards-grid">
           <RepoCard
             title="PerfectlyBalancedHorses"
-            description="A horse management project focused on keeping every race setup perfectly balanced and fun."
+            description="A Minecraft server plugin that improves horse breeding by boosting and balancing speed, jump, and health stats."
             repoPath="Lyzev/PerfectlyBalancedHorses"
             url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
           />
@@ -252,13 +252,13 @@ function App() {
           />
           <RepoCard
             title="SchummelPartie"
-            description="A lightweight game-focused project from Lyzev featuring streamlined mechanics and clean structure."
+            description="A configurable Pummel Party mod with an in-game GUI and gameplay modules for practice and custom sessions."
             repoPath="Lyzev/SchummelPartie"
             url="https://github.com/Lyzev/SchummelPartie/"
           />
           <RepoCard
             title="HorsePower"
-            description="A horsepower-themed project from Lyzev focused on speed, structure, and practical implementation."
+            description="A Minecraft mod that scores horse stats, displays power in HUD/inventory, and includes commands to find strong horses nearby."
             repoPath="Lyzev/HorsePower"
             url="https://github.com/Lyzev/HorsePower/"
           />
