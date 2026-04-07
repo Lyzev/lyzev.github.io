@@ -85,18 +85,18 @@ function RepoCard({ title, description, repoPath, url, highlight }: { title: str
         <span className="repo-stats">
           <span className="stat-item">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-label="Stars" role="img">
-              <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/>
+              <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L1.144 6.164a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
             </svg>
             {stats ? stats.stars : '-'}
           </span>
           <span className="stat-item">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-label="Forks" role="img">
-              <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/>
+              <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 2 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
             </svg>
             {stats ? stats.forks : '-'}
           </span>
         </span>
-        <span className="view-link">View project</span>
+        <span className="view-link">View project &gt;</span>
       </div>
     </a>
   );
@@ -112,9 +112,10 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
       <div className="project-footer pr-footer">
         <span className="pr-meta">
           <span className={`pr-status ${status.toLowerCase()}`}>{status}</span>
+          <span>•</span>
           <span className="pr-date">{date}</span>
         </span>
-        <span className="view-link">View PR</span>
+        <span className="view-link">View PR &gt;</span>
       </div>
     </a>
   );
@@ -204,23 +205,21 @@ function App() {
 
   return (
     <div className="app-container">
-      <main className="hero-section">
-        <fieldset className="intro-box">
-          <legend className="intro-legend">Lyzev</legend>
-          <p className="intro-text">
-            Hi, I'm Lyzev<sup className="name-super">⎡Бен⎤</sup>, a software developer from Central Europe. I started programming in 2020 and learned Java as my first programming language. I contribute to various open source projects on GitHub, focusing on fixing bugs and adding new features. I also love reverse engineering and making mods for games.
-          </p>
-        </fieldset>
+      {/* Dark immersive hero section */}
+      <main className="section-dark">
+        <h1 className="hero-title">Lyzev</h1>
+        <p className="hero-subtitle">
+          Hi, I'm Lyzev<sup className="name-super">⎡Бен⎤</sup>, a software developer from Central Europe. I started programming in 2020 and learned Java as my first programming language.
+        </p>
 
         <p className="contact-info">
-          Reach me via{' '}
-          <a href="mailto:contact@lyzev.dev">Mail</a>,{' '}
-          <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer">GitHub</a>, or{' '}
-          <a href="https://lyzev.dev/discord" target="_blank" rel="noopener noreferrer">Discord</a>.
+          <a href="mailto:contact@lyzev.dev" className="btn-primary">Mail</a>
+          <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub &gt;</a>
+          <a href="https://lyzev.dev/discord" target="_blank" rel="noopener noreferrer" className="view-link">Discord &gt;</a>
         </p>
       </main>
 
-      <section className="projects-section">
+      <section className="section-light">
         <h2 className="section-title">Projects</h2>
         <div className="cards-grid">
           <RepoCard
@@ -245,7 +244,7 @@ function App() {
         </div>
       </section>
 
-      <section className="projects-section">
+      <section className="section-dark">
         <h2 className="section-title">Open Source Contributions</h2>
         <div className="cards-grid pr-grid">
           <PRCard
@@ -276,7 +275,7 @@ function App() {
       <footer className="app-footer">
         <p>&copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
         <p className="legal-links">
-          Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a> (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy</a>) and routed by <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a> (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy</a>).
+          Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a> (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy</a>)
         </p>
       </footer>
     </div>
