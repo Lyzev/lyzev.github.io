@@ -152,8 +152,8 @@ body {
   box-shadow: var(--shadow-main);
 }
 
-.project-card h3, 
-.project-card p, 
+.project-card h3,
+.project-card p,
 .project-card span {
   text-decoration: none !important;
 }
