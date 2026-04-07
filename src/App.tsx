@@ -43,6 +43,7 @@ function useRepoStats(repoPath: string) {
           return parsed.stats;
         }
       } catch {
+        // ignoring
       }
     }
     return null;
@@ -136,6 +137,7 @@ function App() {
           const parsed = JSON.parse(cached);
           if (Date.now() - parsed.timestamp < 15 * 60 * 1000) return;
         } catch {
+          // ignoring
         }
       }
       try {
@@ -149,6 +151,7 @@ function App() {
           }));
         }
       } catch {
+        // ignoring
       }
     })).finally(() => {
       statsLoadedRef.current = true;
