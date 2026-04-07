@@ -347,7 +347,7 @@ function App() {
           </div>
 
           <div className="footer-right">
-            <p>Europe</p>
+            <p>Wall-nut Hills</p>
           </div>
         </div>
       </footer>
