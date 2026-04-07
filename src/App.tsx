@@ -43,7 +43,6 @@ function useRepoStats(repoPath: string) {
           return parsed.stats;
         }
       } catch {
-        // ignore
       }
     }
     return null;
@@ -137,7 +136,6 @@ function App() {
           const parsed = JSON.parse(cached);
           if (Date.now() - parsed.timestamp < 15 * 60 * 1000) return;
         } catch {
-          // ignore
         }
       }
       try {
@@ -151,7 +149,6 @@ function App() {
           }));
         }
       } catch {
-        // ignore
       }
     })).finally(() => {
       statsLoadedRef.current = true;
@@ -205,7 +202,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Dark immersive hero section */}
       <main className="section-dark">
         <h1 className="hero-title">Lyzev</h1>
         <p className="hero-subtitle">
