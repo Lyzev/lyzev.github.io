@@ -70,16 +70,26 @@ body {
   justify-content: center;
   height: 100vh;
   background-color: var(--color-bg);
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.loader-container.fading-out {
+  opacity: 0;
 }
 
 .loader-text {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-  font-size: 56px;
+  font-size: 72px;
   font-weight: 600;
   line-height: 1.07;
   letter-spacing: -0.28px;
   color: var(--color-text-main);
   animation: loader-word-transition 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.loader-text--final {
+  animation: loader-word-in 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 @keyframes loader-word-transition {
@@ -102,6 +112,19 @@ body {
     opacity: 0;
     filter: blur(24px);
     transform: scale(0.75);
+  }
+}
+
+@keyframes loader-word-in {
+  0% {
+    opacity: 0;
+    filter: blur(24px);
+    transform: scale(0.75);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
   }
 }
 
