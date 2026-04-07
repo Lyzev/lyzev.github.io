@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along with Piko. If not, see https://www.gnu.org/licenses/agpl-3.0.en.html.
  */
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, type TransitionEvent } from 'react';
 import './App.css';
 
 const greetings = [
@@ -242,29 +242,14 @@ function App() {
     }
   }, [isFadingOut, isFinalWord]);
 
-  const handleContainerTransitionEnd = useCallback(() => {
-    if (isFadingOut) setIsLoading(false);
+  const handleContainerTransitionEnd = useCallback((event: TransitionEvent<HTMLDivElement>) => {
+    if (!isFadingOut || event.propertyName !== 'opacity') return;
+    setIsLoading(false);
   }, [isFadingOut]);
 
-  if (isLoading) {
-    return (
-      <div
-        className={`loader-container${isFadingOut ? ' fading-out' : ''}`}
-        onTransitionEnd={handleContainerTransitionEnd}
-      >
-        <div
-          key={loadingKey}
-          className={`loader-text${isFinalWord ? ' loader-text--final' : ''}`}
-          onAnimationEnd={handleTextAnimationEnd}
-        >
-          {loadingText}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="app-container">
+    <>
+      <div className="app-container">
       <main className="section">
         <h1 className="hero-title">"ABOUT ME"</h1>
         <p className="hero-subtitle">
@@ -366,7 +351,23 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+
+      {isLoading && (
+        <div
+          className={`loader-container${isFadingOut ? ' fading-out' : ''}`}
+          onTransitionEnd={handleContainerTransitionEnd}
+        >
+          <div
+            key={loadingKey}
+            className={`loader-text${isFinalWord ? ' loader-text--final' : ''}`}
+            onAnimationEnd={handleTextAnimationEnd}
+          >
+            {loadingText}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

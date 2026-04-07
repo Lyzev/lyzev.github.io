@@ -65,17 +65,20 @@ body {
 }
 
 .loader-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-color: var(--color-bg);
   opacity: 1;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.5s ease;
 }
 
 .loader-container.fading-out {
   opacity: 0;
+  pointer-events: none;
 }
 
 .loader-text {
@@ -91,7 +94,7 @@ body {
 }
 
 .loader-text--final {
-  animation: loader-word-in 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: loader-word-in 0.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 @keyframes loader-word-transition {
