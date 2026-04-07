@@ -159,6 +159,25 @@ body {
   text-decoration: none !important;
 }
 
+.project-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  flex-shrink: 0;
+}
+
+.project-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .project-title {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   font-size: 21px;

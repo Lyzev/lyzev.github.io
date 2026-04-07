@@ -74,10 +74,19 @@ function useRepoStats(repoPath: string) {
 
 function RepoCard({ title, description, repoPath, url, highlight }: { title: string, description: string, repoPath: string, url: string, highlight?: boolean }) {
   const stats = useRepoStats(repoPath);
+  const iconUrl = `https://raw.githubusercontent.com/${repoPath}/HEAD/files/.idea/icon.png`;
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer" className={`project-card ${highlight ? 'highlight-card' : ''}`}>
       <div>
+        <div className="project-icon-wrapper">
+          <img
+            src={iconUrl}
+            alt={`${title} icon`}
+            className="project-icon"
+            onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+          />
+        </div>
         <h3 className="project-title">{title}</h3>
         <p className="project-description">{description}</p>
       </div>
