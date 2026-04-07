@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along with Piko. If not, see https://www.gnu.org/licenses/agpl-3.0.en.html.
  */
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 
 const greetings = [
@@ -167,10 +167,17 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadingText, setLoadingText] = useState("");
-  const [loadingKey, setLoadingKey] = useState(0);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isFinalWord, setIsFinalWord] = useState(false);
+  const [loadingText, setLoadingText] = useState<string>(() => {
+    const available = greetings.slice(1);
+    return available[Math.floor(Math.random() * available.length)];
+  });
+  const [loadingKey, setLoadingKey] = useState(1);
   const statsLoadedRef = useRef(false);
   const imagesLoadedRef = useRef(false);
+  const tickRef = useRef(1);
+  const lastTextRef = useRef(loadingText);
 
   useEffect(() => {
     const statsPromise = Promise.allSettled(projectRepoPaths.map(async (repoPath) => {
@@ -212,45 +219,44 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    let tick = 0;
-    let lastText = "";
+  const handleTextAnimationEnd = useCallback(() => {
+    if (isFadingOut) return;
 
-    const setWord = (isEnding = false) => {
-      if (isEnding) {
-        lastText = greetings[0];
-      } else {
-        const available = greetings.slice(1).filter(g => g !== lastText);
-        lastText = available[Math.floor(Math.random() * available.length)];
-      }
-      setLoadingText(lastText);
+    if (isFinalWord) {
+      setIsFadingOut(true);
+      return;
+    }
+
+    if (tickRef.current >= 3 && statsLoadedRef.current && imagesLoadedRef.current) {
+      lastTextRef.current = greetings[0];
+      setLoadingText(greetings[0]);
       setLoadingKey(k => k + 1);
-    };
+      setIsFinalWord(true);
+    } else {
+      const available = greetings.slice(1).filter(g => g !== lastTextRef.current);
+      const text = available[Math.floor(Math.random() * available.length)];
+      lastTextRef.current = text;
+      setLoadingText(text);
+      setLoadingKey(k => k + 1);
+      tickRef.current++;
+    }
+  }, [isFadingOut, isFinalWord]);
 
-    setWord();
-    tick++;
-
-    const interval = setInterval(() => {
-      if (tick >= 3 && statsLoadedRef.current && imagesLoadedRef.current) {
-        if (lastText === greetings[0]) {
-           setIsLoading(false);
-           clearInterval(interval);
-        } else {
-           setWord(true);
-        }
-      } else {
-        setWord();
-        tick++;
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const handleContainerTransitionEnd = useCallback(() => {
+    if (isFadingOut) setIsLoading(false);
+  }, [isFadingOut]);
 
   if (isLoading) {
     return (
-      <div className="loader-container">
-        <div key={loadingKey} className="loader-text">
+      <div
+        className={`loader-container${isFadingOut ? ' fading-out' : ''}`}
+        onTransitionEnd={handleContainerTransitionEnd}
+      >
+        <div
+          key={loadingKey}
+          className={`loader-text${isFinalWord ? ' loader-text--final' : ''}`}
+          onAnimationEnd={handleTextAnimationEnd}
+        >
           {loadingText}
         </div>
       </div>
