@@ -79,7 +79,7 @@ body {
   line-height: 1.07;
   letter-spacing: -0.28px;
   color: var(--color-text-main);
-  animation: loader-word-transition 0.8s ease-in-out;
+  animation: loader-word-transition 1s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @keyframes loader-word-transition {
