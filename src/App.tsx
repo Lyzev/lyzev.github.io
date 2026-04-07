@@ -21,7 +21,7 @@ import './App.css';
 
 const greetings = [
   "Hello", "Hola", "Bonjour", "Hallo", "Ciao", "Привет", "你好", "Olá", "مرحبا",
-  "नमस्ते", "こんにちは", "안녕하세요", "Sawubona", "Salam", "Shalom", "Hej",
+  "नमस्ते", "こんにちは", "안녕하세요", "Sawubona", "Salam", "Hej",
   "Kamusta", "Xin chào", "Tere", "Selamat", "Mingalaba", "Jambo", "Zdravstvuyte",
   "Aloha", "Merhaba", "Szia", "Salve", "Sveiki", "Dia dhuit", "Cześć", "Kia ora",
   "Sawatdee", "Halo", "Mhoro", "Saluton", "Bula", "Yassas", "Dobry den", "Mabuhay"
@@ -316,7 +316,7 @@ function App() {
       </section>
 
       <section className="section">
-        <h2 className="section-title">"OPEN SOURCE CONTRIBUTIONS"</h2>
+        <h2 className="section-title">"CONTRIBUTIONS"</h2>
         <div className="cards-grid pr-grid">
           <PRCard
             title="PR #320 on imgui-java"
