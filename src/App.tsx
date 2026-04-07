@@ -231,7 +231,7 @@ function App() {
     tick++;
 
     const interval = setInterval(() => {
-      if (tick >= 4 && statsLoadedRef.current && imagesLoadedRef.current) {
+      if (tick >= 3 && statsLoadedRef.current && imagesLoadedRef.current) {
         if (lastText === greetings[0]) {
            setIsLoading(false);
            clearInterval(interval);
@@ -242,7 +242,7 @@ function App() {
         setWord();
         tick++;
       }
-    }, 800);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
