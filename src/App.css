@@ -85,7 +85,9 @@ body {
   line-height: 1.07;
   letter-spacing: -0.28px;
   color: var(--color-text-main);
+  opacity: 0;
   animation: loader-word-transition 1s cubic-bezier(0.65, 0, 0.35, 1);
+  animation-fill-mode: both;
 }
 
 .loader-text--final {
