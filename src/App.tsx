@@ -238,10 +238,10 @@ function App() {
         <h2 className="section-title">"PROJECTS"</h2>
         <div className="cards-grid">
           <RepoCard
-            title="PerfectlyBalancedHorses"
-            description="A Minecraft server plugin that improves horse breeding by boosting and balancing speed, jump, and health stats."
-            repoPath="Lyzev/PerfectlyBalancedHorses"
-            url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
+            title="Piko"
+            description="Effortlessly manage events in your application with this lightweight and flexible event management library."
+            repoPath="SchizoidDevelopment/piko"
+            url="https://github.com/SchizoidDevelopment/piko"
           />
           <RepoCard
             title="Schizoid"
@@ -249,6 +249,18 @@ function App() {
             repoPath="SchizoidDevelopment/schizoid"
             url="https://github.com/SchizoidDevelopment/schizoid"
             highlight={true}
+          />
+          <RepoCard
+            title="Kratos"
+            description="A flexible Kotlin library for seamless management and tracking of customizable application settings."
+            repoPath="SchizoidDevelopment/kratos"
+            url="https://github.com/SchizoidDevelopment/kratos"
+          />
+          <RepoCard
+            title="PerfectlyBalancedHorses"
+            description="A Minecraft server plugin that improves horse breeding by boosting and balancing speed, jump, and health stats."
+            repoPath="Lyzev/PerfectlyBalancedHorses"
+            url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
           />
           <RepoCard
             title="SchummelPartie"
@@ -261,18 +273,6 @@ function App() {
             description="A Minecraft mod that scores horse stats, displays power in HUD/inventory, and includes commands to find strong horses nearby."
             repoPath="Lyzev/HorsePower"
             url="https://github.com/Lyzev/HorsePower/"
-          />
-          <RepoCard
-            title="Kratos"
-            description="A flexible Kotlin library for seamless management and tracking of customizable application settings."
-            repoPath="SchizoidDevelopment/kratos"
-            url="https://github.com/SchizoidDevelopment/kratos"
-          />
-          <RepoCard
-            title="Piko"
-            description="Effortlessly manage events in your application with this lightweight and flexible event management library."
-            repoPath="SchizoidDevelopment/piko"
-            url="https://github.com/SchizoidDevelopment/piko"
           />
         </div>
       </section>
