@@ -32,6 +32,41 @@ interface RepoStats {
   forks: number;
 }
 
+const projectRepoPaths = [
+  "SchizoidDevelopment/schizoid",
+  "Lyzev/PerfectlyBalancedHorses",
+  "Lyzev/SchummelPartie",
+  "Lyzev/HorsePower",
+  "SchizoidDevelopment/kratos",
+  "SchizoidDevelopment/piko"
+];
+
+function createProjectIconUrl(repoPath: string) {
+  return `https://raw.githubusercontent.com/${repoPath}/refs/heads/master/.idea/icon.png`;
+}
+
+function preloadImage(url: string, timeoutMs = 5000) {
+  return new Promise<void>((resolve) => {
+    const img = new Image();
+    let settled = false;
+
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeoutId);
+      resolve();
+    };
+
+    const timeoutId = window.setTimeout(finish, timeoutMs);
+
+    img.onload = finish;
+    img.onerror = finish;
+    img.src = url;
+
+    if (img.complete) finish();
+  });
+}
+
 function useRepoStats(repoPath: string) {
   const [stats, setStats] = useState<RepoStats | null>(() => {
     const cacheKey = `gh-repo-stats-${repoPath}`;
@@ -74,7 +109,7 @@ function useRepoStats(repoPath: string) {
 
 function RepoCard({ title, description, repoPath, url, highlight }: { title: string, description: string, repoPath: string, url: string, highlight?: boolean }) {
   const stats = useRepoStats(repoPath);
-  const iconUrl = `https://raw.githubusercontent.com/${repoPath}/refs/heads/master/.idea/icon.png`;
+  const iconUrl = createProjectIconUrl(repoPath);
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer" className={`project-card ${highlight ? 'highlight-card' : ''}`}>
@@ -135,17 +170,10 @@ function App() {
   const [loadingText, setLoadingText] = useState("");
   const [loadingKey, setLoadingKey] = useState(0);
   const statsLoadedRef = useRef(false);
+  const imagesLoadedRef = useRef(false);
 
   useEffect(() => {
-    const repos = [
-      "SchizoidDevelopment/schizoid",
-      "Lyzev/PerfectlyBalancedHorses",
-      "Lyzev/SchummelPartie",
-      "Lyzev/HorsePower",
-      "SchizoidDevelopment/kratos",
-      "SchizoidDevelopment/piko"
-    ];
-    Promise.allSettled(repos.map(async (repoPath) => {
+    const statsPromise = Promise.allSettled(projectRepoPaths.map(async (repoPath) => {
       const cacheKey = `gh-repo-stats-${repoPath}`;
       const cached = localStorage.getItem(cacheKey);
       if (cached) {
@@ -169,8 +197,18 @@ function App() {
       } catch {
         // ignoring
       }
-    })).finally(() => {
+    }));
+
+    const imagesPromise = Promise.allSettled(
+      projectRepoPaths.map((repoPath) => preloadImage(createProjectIconUrl(repoPath)))
+    );
+
+    statsPromise.finally(() => {
       statsLoadedRef.current = true;
+    });
+
+    imagesPromise.finally(() => {
+      imagesLoadedRef.current = true;
     });
   }, []);
 
@@ -193,7 +231,7 @@ function App() {
     tick++;
 
     const interval = setInterval(() => {
-      if (tick >= 4 && statsLoadedRef.current) {
+      if (tick >= 4 && statsLoadedRef.current && imagesLoadedRef.current) {
         if (lastText === greetings[0]) {
            setIsLoading(false);
            clearInterval(interval);
