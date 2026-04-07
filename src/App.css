@@ -30,6 +30,8 @@
 
   --color-merged: #8250df;
   --color-border: rgba(0, 0, 0, 0.05);
+  --color-icon-bg: #ebebef;
+  --color-icon-border: rgba(0, 0, 0, 0.08);
   --shadow-main: rgba(0, 0, 0, 0.08) 0px 10px 30px 0px;
 }
 
@@ -46,6 +48,8 @@
 
     --color-merged: #a371f7;
     --color-border: rgba(255, 255, 255, 0.05);
+    --color-icon-bg: #2a2a2e;
+    --color-icon-border: rgba(255, 255, 255, 0.1);
     --shadow-main: rgba(0, 0, 0, 0.4) 0px 10px 30px 0px;
   }
 }
@@ -168,7 +172,8 @@ body {
   margin: 0 auto 16px auto;
   border-radius: 16px;
   overflow: hidden;
-  background-color: var(--color-bg);
+  background-color: var(--color-icon-bg);
+  border: 1px solid var(--color-icon-border);
   flex-shrink: 0;
 }
 
