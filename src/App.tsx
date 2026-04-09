@@ -341,13 +341,13 @@ function App() {
           </div>
 
           <div className="footer-center">
-            <a href="/legal/privacy.html">Privacy Policy</a>
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
             <span className="footer-separator">|</span>
-            <a href="/legal/terms.html">Terms of Use</a>
+            <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Use</a>
             <span className="footer-separator">|</span>
-            <a href="/legal/cookies.html">Cookie Policy</a>
+            <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
             <span className="footer-separator">|</span>
-            <a href="/legal/cookie-settings.html">Cookie Settings</a>
+            <a href="https://www.cloudflare.com/privacypolicy/#your-rights-and-choices" target="_blank" rel="noopener noreferrer">Cookie Settings</a>
           </div>
 
           <div className="footer-right">
