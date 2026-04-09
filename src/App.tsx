@@ -47,6 +47,18 @@ const projectRepoPaths = [
 
 const SHARED_FOOTER_RENDER_MAX_ATTEMPTS = 20;
 const SHARED_FOOTER_RENDER_RETRY_DELAY_MS = 50;
+const KNOWN_ROUTE_PATHS = new Set(['/', '/index.html']);
+
+function normalizeRoutePath(pathname: string) {
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    return pathname.slice(0, -1);
+  }
+  return pathname;
+}
+
+function isUnknownRoutePath(pathname: string) {
+  return !KNOWN_ROUTE_PATHS.has(normalizeRoutePath(pathname));
+}
 
 function createProjectIconUrl(repoPath: string) {
   return `https://raw.githubusercontent.com/${repoPath}/refs/heads/master/.idea/icon.png`;
@@ -173,7 +185,8 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const isNotFoundRoute = isUnknownRoutePath(window.location.pathname);
+  const [isLoading, setIsLoading] = useState(!isNotFoundRoute);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isFinalWord, setIsFinalWord] = useState(false);
   const [loadingText, setLoadingText] = useState<string>(() => {
@@ -186,6 +199,10 @@ function App() {
   const tickRef = useRef(1);
   const lastTextRef = useRef(loadingText);
   const sharedFooterContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    document.title = isNotFoundRoute ? '404 — lyzev.dev' : 'lyzev.dev';
+  }, [isNotFoundRoute]);
 
   useEffect(() => {
     if (!sharedFooterContainerRef.current) return;
@@ -216,6 +233,8 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (isNotFoundRoute) return;
+
     const statsPromise = Promise.allSettled(projectRepoPaths.map(async (repoPath) => {
       const cacheKey = `gh-repo-stats-${repoPath}`;
       const cached = localStorage.getItem(cacheKey);
@@ -253,7 +272,7 @@ function App() {
     imagesPromise.finally(() => {
       imagesLoadedRef.current = true;
     });
-  }, []);
+  }, [isNotFoundRoute]);
 
   const handleTextAnimationEnd = useCallback(() => {
     if (isFadingOut) return;
@@ -286,94 +305,110 @@ function App() {
   return (
     <>
       <div className="app-container">
-      <main className="section">
-        <h1 className="hero-title">"ABOUT ME"</h1>
-        <p className="hero-subtitle">
-          Hi, I'm Lyzev<sup className="name-super">⎡Бен⎤</sup>, a software developer from Central Europe. I started programming in 2020 and learned Java as my first programming language.
-        </p>
+        {isNotFoundRoute ? (
+          <main className="section not-found-section">
+            <p className="error-code" aria-hidden="true">404</p>
+            <h1 className="hero-title">"PAGE NOT FOUND"</h1>
+            <p className="hero-subtitle not-found-subtitle">
+              The page you're looking for doesn't exist or has been moved.
+            </p>
+            <nav className="contact-info">
+              <a href="/" className="btn-primary">Go Home</a>
+              <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub</a>
+            </nav>
+          </main>
+        ) : (
+          <>
+            <main className="section">
+              <h1 className="hero-title">"ABOUT ME"</h1>
+              <p className="hero-subtitle">
+                Hi, I'm Lyzev<sup className="name-super">⎡Бен⎤</sup>, a software developer from Central Europe. I started programming in 2020 and learned Java as my first programming language.
+              </p>
 
-        <p className="contact-info">
-          <a href="mailto:contact@lyzev.dev" className="btn-primary">Mail</a>
-          <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub</a>
-          <a href="https://lyzev.dev/discord" target="_blank" rel="noopener noreferrer" className="view-link">Discord</a>
-        </p>
-      </main>
+              <p className="contact-info">
+                <a href="mailto:contact@lyzev.dev" className="btn-primary">Mail</a>
+                <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub</a>
+                <a href="https://lyzev.dev/discord" target="_blank" rel="noopener noreferrer" className="view-link">Discord</a>
+              </p>
+            </main>
 
-      <section className="section">
-        <h2 className="section-title">"PROJECTS"</h2>
-        <div className="cards-grid">
-          <RepoCard
-            title="Piko"
-            description="Effortlessly manage events in your application with this lightweight and flexible event management library."
-            repoPath="SchizoidDevelopment/piko"
-            url="https://github.com/SchizoidDevelopment/piko"
-          />
-          <RepoCard
-            title="Schizoid"
-            description="Elevate your Minecraft gameplay with this free and feature-rich client built with Fabric API and utilizing mixin-based injection techniques."
-            repoPath="SchizoidDevelopment/schizoid"
-            url="https://github.com/SchizoidDevelopment/schizoid"
-            highlight={true}
-          />
-          <RepoCard
-            title="Kratos"
-            description="A flexible Kotlin library for seamless management and tracking of customizable application settings."
-            repoPath="SchizoidDevelopment/kratos"
-            url="https://github.com/SchizoidDevelopment/kratos"
-          />
-          <RepoCard
-            title="PBH"
-            description="A Minecraft server plugin that improves horse breeding by boosting and balancing speed, jump, and health stats."
-            repoPath="Lyzev/PerfectlyBalancedHorses"
-            url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
-          />
-          <RepoCard
-            title="SchummelPartie"
-            description="A configurable Pummel Party mod with an in-game GUI and gameplay modules for practice and custom sessions."
-            repoPath="Lyzev/SchummelPartie"
-            url="https://github.com/Lyzev/SchummelPartie/"
-          />
-          <RepoCard
-            title="HorsePower"
-            description="A Minecraft mod that scores horse stats, displays power in HUD/inventory, and includes commands to find strong horses nearby."
-            repoPath="Lyzev/HorsePower"
-            url="https://github.com/Lyzev/HorsePower/"
-          />
-        </div>
-      </section>
+            <section className="section">
+              <h2 className="section-title">"PROJECTS"</h2>
+              <div className="cards-grid">
+                <RepoCard
+                  title="Piko"
+                  description="Effortlessly manage events in your application with this lightweight and flexible event management library."
+                  repoPath="SchizoidDevelopment/piko"
+                  url="https://github.com/SchizoidDevelopment/piko"
+                />
+                <RepoCard
+                  title="Schizoid"
+                  description="Elevate your Minecraft gameplay with this free and feature-rich client built with Fabric API and utilizing mixin-based injection techniques."
+                  repoPath="SchizoidDevelopment/schizoid"
+                  url="https://github.com/SchizoidDevelopment/schizoid"
+                  highlight={true}
+                />
+                <RepoCard
+                  title="Kratos"
+                  description="A flexible Kotlin library for seamless management and tracking of customizable application settings."
+                  repoPath="SchizoidDevelopment/kratos"
+                  url="https://github.com/SchizoidDevelopment/kratos"
+                />
+                <RepoCard
+                  title="PBH"
+                  description="A Minecraft server plugin that improves horse breeding by boosting and balancing speed, jump, and health stats."
+                  repoPath="Lyzev/PerfectlyBalancedHorses"
+                  url="https://github.com/Lyzev/PerfectlyBalancedHorses/"
+                />
+                <RepoCard
+                  title="SchummelPartie"
+                  description="A configurable Pummel Party mod with an in-game GUI and gameplay modules for practice and custom sessions."
+                  repoPath="Lyzev/SchummelPartie"
+                  url="https://github.com/Lyzev/SchummelPartie/"
+                />
+                <RepoCard
+                  title="HorsePower"
+                  description="A Minecraft mod that scores horse stats, displays power in HUD/inventory, and includes commands to find strong horses nearby."
+                  repoPath="Lyzev/HorsePower"
+                  url="https://github.com/Lyzev/HorsePower/"
+                />
+              </div>
+            </section>
 
-      <section className="section">
-        <h2 className="section-title">"CONTRIBUTIONS"</h2>
-        <div className="cards-grid pr-grid">
-          <PRCard
-            title="PR #320 on imgui-java"
-            description="Enhance OpenGL compatibility checks for sampler objects."
-            url="https://github.com/SpaiR/imgui-java/pull/320"
-            status="Merged"
-            date="Feb 2, 2025"
-            highlight={true}
-          />
-          <PRCard
-            title="PR #4636 on baritone"
-            description="Added settings to control block placement in fluid sources and flowing fluids."
-            url="https://github.com/cabaletta/baritone/pull/4636"
-            status="Merged"
-            date="Feb 8, 2025"
-          />
-          <PRCard
-            title="PR #3671 on meteor-client"
-            description="Add Dual Kawase Blur (aka. Dual Filter)."
-            url="https://github.com/MeteorDevelopment/meteor-client/pull/3671"
-            status="Merged"
-            date="May 21, 2023"
-          />
-        </div>
-      </section>
+            <section className="section">
+              <h2 className="section-title">"CONTRIBUTIONS"</h2>
+              <div className="cards-grid pr-grid">
+                <PRCard
+                  title="PR #320 on imgui-java"
+                  description="Enhance OpenGL compatibility checks for sampler objects."
+                  url="https://github.com/SpaiR/imgui-java/pull/320"
+                  status="Merged"
+                  date="Feb 2, 2025"
+                  highlight={true}
+                />
+                <PRCard
+                  title="PR #4636 on baritone"
+                  description="Added settings to control block placement in fluid sources and flowing fluids."
+                  url="https://github.com/cabaletta/baritone/pull/4636"
+                  status="Merged"
+                  date="Feb 8, 2025"
+                />
+                <PRCard
+                  title="PR #3671 on meteor-client"
+                  description="Add Dual Kawase Blur (aka. Dual Filter)."
+                  url="https://github.com/MeteorDevelopment/meteor-client/pull/3671"
+                  status="Merged"
+                  date="May 21, 2023"
+                />
+              </div>
+            </section>
+          </>
+        )}
 
-      <div ref={sharedFooterContainerRef} />
+        <div ref={sharedFooterContainerRef} />
       </div>
 
-      {isLoading && (
+      {!isNotFoundRoute && isLoading && (
         <div
           className={`loader-container${isFadingOut ? ' fading-out' : ''}`}
           onTransitionEnd={handleContainerTransitionEnd}
