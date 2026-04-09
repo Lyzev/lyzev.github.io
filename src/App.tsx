@@ -178,6 +178,13 @@ function App() {
   const imagesLoadedRef = useRef(false);
   const tickRef = useRef(1);
   const lastTextRef = useRef(loadingText);
+  const footerHostRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const renderSharedFooter = (window as Window & { renderSharedFooter?: (target: HTMLElement) => void }).renderSharedFooter;
+    if (!footerHostRef.current || !renderSharedFooter) return;
+    renderSharedFooter(footerHostRef.current);
+  }, []);
 
   useEffect(() => {
     const statsPromise = Promise.allSettled(projectRepoPaths.map(async (repoPath) => {
@@ -334,30 +341,7 @@ function App() {
         </div>
       </section>
 
-      <footer className="app-footer">
-        <div className="app-footer-inner">
-          <p className="footer-cookie-note">
-            No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
-          </p>
-          <div className="footer-bottom-row">
-            <div className="footer-left">
-              <p>Copyright &copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
-            </div>
-
-            <div className="footer-center">
-              <p className="footer-links">
-                <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
-                <span className="footer-separator">|</span>
-                <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">License</a>
-              </p>
-            </div>
-
-            <div className="footer-right">
-              <p>Wall-nut Hills</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div ref={footerHostRef} />
       </div>
 
       {isLoading && (
