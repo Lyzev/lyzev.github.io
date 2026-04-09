@@ -17,6 +17,7 @@
  */
 
 import { useState, useEffect, useRef, useCallback, type TransitionEvent } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 const greetings = [
@@ -40,6 +41,9 @@ const projectRepoPaths = [
   "SchizoidDevelopment/kratos",
   "SchizoidDevelopment/piko"
 ];
+
+const SITE_TITLE = 'lyzev.dev';
+const NOT_FOUND_TITLE = '404 — lyzev.dev';
 
 function createProjectIconUrl(repoPath: string) {
   return `https://raw.githubusercontent.com/${repoPath}/refs/heads/master/.idea/icon.png`;
@@ -165,7 +169,34 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
   );
 }
 
-function App() {
+function Footer() {
+  return (
+    <footer className="app-footer">
+      <div className="app-footer-inner">
+        <p className="footer-cookie-note">
+          No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
+        </p>
+        <div className="footer-bottom-row">
+          <div className="footer-left">
+            <p>Copyright &copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
+          </div>
+          <div className="footer-center">
+            <p className="footer-links">
+              <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
+              <span className="footer-separator">|</span>
+              <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">License</a>
+            </p>
+          </div>
+          <div className="footer-right">
+            <p>Wall-nut Hills</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isFinalWord, setIsFinalWord] = useState(false);
@@ -178,6 +209,10 @@ function App() {
   const imagesLoadedRef = useRef(false);
   const tickRef = useRef(1);
   const lastTextRef = useRef(loadingText);
+
+  useEffect(() => {
+    document.title = SITE_TITLE;
+  }, []);
 
   useEffect(() => {
     const statsPromise = Promise.allSettled(projectRepoPaths.map(async (repoPath) => {
@@ -249,7 +284,6 @@ function App() {
 
   return (
     <>
-      <div className="app-container">
       <main className="section">
         <h1 className="hero-title">"ABOUT ME"</h1>
         <p className="hero-subtitle">
@@ -334,32 +368,6 @@ function App() {
         </div>
       </section>
 
-      <footer className="app-footer">
-        <div className="app-footer-inner">
-          <p className="footer-cookie-note">
-            No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
-          </p>
-          <div className="footer-bottom-row">
-            <div className="footer-left">
-              <p>Copyright &copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
-            </div>
-
-            <div className="footer-center">
-              <p className="footer-links">
-                <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
-                <span className="footer-separator">|</span>
-                <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">License</a>
-              </p>
-            </div>
-
-            <div className="footer-right">
-              <p>Wall-nut Hills</p>
-            </div>
-          </div>
-        </div>
-      </footer>
-      </div>
-
       {isLoading && (
         <div
           className={`loader-container${isFadingOut ? ' fading-out' : ''}`}
@@ -375,6 +383,39 @@ function App() {
         </div>
       )}
     </>
+  );
+}
+
+function NotFoundPage() {
+  useEffect(() => {
+    document.title = NOT_FOUND_TITLE;
+  }, []);
+
+  return (
+    <main className="section not-found-section">
+      <p className="error-code" aria-hidden="true">404</p>
+      <h1 className="hero-title">"PAGE NOT FOUND"</h1>
+      <p className="hero-subtitle not-found-subtitle">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <nav className="contact-info">
+        <a href="/" className="btn-primary">Go Home</a>
+        <a href="https://github.com/Lyzev" target="_blank" rel="noopener noreferrer" className="view-link">GitHub</a>
+      </nav>
+    </main>
+  );
+}
+
+function App() {
+  return (
+    <div className="app-container">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/index.html" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
