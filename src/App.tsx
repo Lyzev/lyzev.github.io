@@ -19,6 +19,10 @@
 import { useState, useEffect, useRef, useCallback, type TransitionEvent } from 'react';
 import './App.css';
 
+type SharedFooterWindow = Window & {
+  renderSharedFooter?: (target: HTMLElement) => void;
+};
+
 const greetings = [
   "Hello", "Hola", "Bonjour", "Hallo", "Ciao", "Привет", "你好", "Olá", "مرحبا",
   "नमस्ते", "こんにちは", "안녕하세요", "Sawubona", "Salam", "Hej",
@@ -181,7 +185,7 @@ function App() {
   const footerHostRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const renderSharedFooter = (window as Window & { renderSharedFooter?: (target: HTMLElement) => void }).renderSharedFooter;
+    const renderSharedFooter = (window as SharedFooterWindow).renderSharedFooter;
     if (!footerHostRef.current || !renderSharedFooter) return;
     renderSharedFooter(footerHostRef.current);
   }, []);
