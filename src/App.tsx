@@ -45,6 +45,9 @@ const projectRepoPaths = [
   "SchizoidDevelopment/piko"
 ];
 
+const SHARED_FOOTER_RENDER_MAX_ATTEMPTS = 20;
+const SHARED_FOOTER_RENDER_RETRY_DELAY_MS = 50;
+
 function createProjectIconUrl(repoPath: string) {
   return `https://raw.githubusercontent.com/${repoPath}/refs/heads/master/.idea/icon.png`;
 }
@@ -188,13 +191,16 @@ function App() {
     if (!sharedFooterContainerRef.current) return;
 
     let attempts = 0;
-    const maxAttempts = 20;
-    const retryDelayMs = 50;
     const timerId = window.setInterval(() => {
+      if (!sharedFooterContainerRef.current) {
+        window.clearInterval(timerId);
+        return;
+      }
+
       const renderSharedFooter = (window as SharedFooterWindow).renderSharedFooter;
-      if (!sharedFooterContainerRef.current || !renderSharedFooter) {
+      if (!renderSharedFooter) {
         attempts++;
-        if (attempts >= maxAttempts) {
+        if (attempts >= SHARED_FOOTER_RENDER_MAX_ATTEMPTS) {
           window.clearInterval(timerId);
         }
         return;
@@ -202,7 +208,7 @@ function App() {
 
       renderSharedFooter(sharedFooterContainerRef.current);
       window.clearInterval(timerId);
-    }, retryDelayMs);
+    }, SHARED_FOOTER_RENDER_RETRY_DELAY_MS);
 
     return () => {
       window.clearInterval(timerId);
