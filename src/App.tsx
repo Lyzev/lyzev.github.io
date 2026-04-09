@@ -341,9 +341,13 @@ function App() {
           </div>
 
           <div className="footer-center">
-            <a href="https://docs.github.com/en/site-policy/privacy-policies">Privacy Policy</a>
+            <a href="/legal/privacy.html">Privacy Policy</a>
             <span className="footer-separator">|</span>
-            <a href="https://www.gnu.org/licenses/agpl-3.0.html">Terms of Use</a>
+            <a href="/legal/terms.html">Terms of Use</a>
+            <span className="footer-separator">|</span>
+            <a href="/legal/cookies.html">Cookie Policy</a>
+            <span className="footer-separator">|</span>
+            <a href="/legal/cookie-settings.html">Cookie Settings</a>
           </div>
 
           <div className="footer-right">
