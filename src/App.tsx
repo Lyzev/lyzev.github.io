@@ -47,7 +47,10 @@ const projectRepoPaths = [
 
 const SHARED_FOOTER_RENDER_MAX_ATTEMPTS = 20;
 const SHARED_FOOTER_RENDER_RETRY_DELAY_MS = 50;
+const SHARED_FOOTER_RENDER_TIMEOUT_MS = SHARED_FOOTER_RENDER_MAX_ATTEMPTS * SHARED_FOOTER_RENDER_RETRY_DELAY_MS;
 const KNOWN_ROUTE_PATHS = new Set(['/', '/index.html']);
+const SITE_TITLE = 'lyzev.dev';
+const NOT_FOUND_TITLE = '404 — lyzev.dev';
 
 function normalizeRoutePath(pathname: string) {
   if (pathname.length > 1 && pathname.endsWith('/')) {
@@ -201,16 +204,17 @@ function App() {
   const sharedFooterContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    document.title = isNotFoundRoute ? '404 — lyzev.dev' : 'lyzev.dev';
+    document.title = isNotFoundRoute ? NOT_FOUND_TITLE : SITE_TITLE;
   }, [isNotFoundRoute]);
 
   useEffect(() => {
     if (!sharedFooterContainerRef.current) return;
 
     let attempts = 0;
-    const timerId = window.setInterval(() => {
+    // Retry up to 1000ms to allow the shared footer script to initialize.
+    const footerRenderIntervalId = window.setInterval(() => {
       if (!sharedFooterContainerRef.current) {
-        window.clearInterval(timerId);
+        window.clearInterval(footerRenderIntervalId);
         return;
       }
 
@@ -218,17 +222,18 @@ function App() {
       if (!renderSharedFooter) {
         attempts++;
         if (attempts >= SHARED_FOOTER_RENDER_MAX_ATTEMPTS) {
-          window.clearInterval(timerId);
+          window.clearInterval(footerRenderIntervalId);
         }
         return;
       }
 
       renderSharedFooter(sharedFooterContainerRef.current);
-      window.clearInterval(timerId);
+      window.clearInterval(footerRenderIntervalId);
     }, SHARED_FOOTER_RENDER_RETRY_DELAY_MS);
+    window.setTimeout(() => window.clearInterval(footerRenderIntervalId), SHARED_FOOTER_RENDER_TIMEOUT_MS);
 
     return () => {
-      window.clearInterval(timerId);
+      window.clearInterval(footerRenderIntervalId);
     };
   }, []);
 
