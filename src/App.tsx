@@ -211,7 +211,7 @@ function App() {
     if (!sharedFooterContainerRef.current) return;
 
     let attempts = 0;
-    // Retry up to 1000ms to allow the shared footer script to initialize.
+    // Retry up to SHARED_FOOTER_RENDER_TIMEOUT_MS to allow the shared footer script to initialize.
     const footerRenderIntervalId = window.setInterval(() => {
       if (!sharedFooterContainerRef.current) {
         window.clearInterval(footerRenderIntervalId);
