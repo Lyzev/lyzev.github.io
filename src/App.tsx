@@ -341,13 +341,18 @@ function App() {
           </div>
 
           <div className="footer-center">
-            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-            <span className="footer-separator">|</span>
-            <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Use</a>
-            <span className="footer-separator">|</span>
-            <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
-            <span className="footer-separator">|</span>
-            <a href="https://www.cloudflare.com/privacypolicy/#your-rights-and-choices" target="_blank" rel="noopener noreferrer">Cookie Settings</a>
+            <p className="footer-links">
+              <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
+              <span className="footer-separator">|</span>
+              <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a>
+              <span className="footer-separator">|</span>
+              <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">GitHub Terms</a>
+              <span className="footer-separator">|</span>
+              <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">Source Code License (AGPLv3)</a>
+            </p>
+            <p className="footer-cookie-note">
+              No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
+            </p>
           </div>
 
           <div className="footer-right">
