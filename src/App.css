@@ -363,6 +363,15 @@ a.view-link:hover {
   text-align: center;
 }
 
+.footer-links {
+  margin: 0 0 8px 0;
+}
+
+.footer-cookie-note {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
 .footer-right {
   flex: 1;
   text-align: right;
