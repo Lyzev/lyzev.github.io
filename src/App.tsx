@@ -352,7 +352,7 @@ function App() {
                 <span className="footer-separator">|</span>
                 <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">GitHub Terms</a>
                 <span className="footer-separator">|</span>
-                <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">Website Source Code (GNU AGPLv3)</a>
+                <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">License</a>
               </p>
             </div>
 
