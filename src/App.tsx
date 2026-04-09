@@ -182,12 +182,31 @@ function App() {
   const imagesLoadedRef = useRef(false);
   const tickRef = useRef(1);
   const lastTextRef = useRef(loadingText);
-  const footerHostRef = useRef<HTMLDivElement | null>(null);
+  const sharedFooterContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const renderSharedFooter = (window as SharedFooterWindow).renderSharedFooter;
-    if (!footerHostRef.current || !renderSharedFooter) return;
-    renderSharedFooter(footerHostRef.current);
+    if (!sharedFooterContainerRef.current) return;
+
+    let attempts = 0;
+    const maxAttempts = 20;
+    const retryDelayMs = 50;
+    const timerId = window.setInterval(() => {
+      const renderSharedFooter = (window as SharedFooterWindow).renderSharedFooter;
+      if (!sharedFooterContainerRef.current || !renderSharedFooter) {
+        attempts++;
+        if (attempts >= maxAttempts) {
+          window.clearInterval(timerId);
+        }
+        return;
+      }
+
+      renderSharedFooter(sharedFooterContainerRef.current);
+      window.clearInterval(timerId);
+    }, retryDelayMs);
+
+    return () => {
+      window.clearInterval(timerId);
+    };
   }, []);
 
   useEffect(() => {
@@ -345,7 +364,7 @@ function App() {
         </div>
       </section>
 
-      <div ref={footerHostRef} />
+      <div ref={sharedFooterContainerRef} />
       </div>
 
       {isLoading && (
