@@ -347,6 +347,13 @@ a.view-link:hover {
   max-width: 980px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-bottom-row {
+  display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -370,6 +377,7 @@ a.view-link:hover {
 .footer-cookie-note {
   margin: 0;
   color: var(--color-text-secondary);
+  text-align: center;
 }
 
 .footer-right {
@@ -397,7 +405,7 @@ a.view-link:hover {
 }
 
 @media (max-width: 768px) {
-  .app-footer-inner {
+  .footer-bottom-row {
     flex-direction: column;
     text-align: center;
   }
