@@ -181,6 +181,13 @@
         max-width: 980px;
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-bottom-row {
+        display: flex;
+        width: 100%;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
@@ -198,6 +205,7 @@
       .footer-cookie-note {
         margin: 0;
         color: var(--color-text-secondary);
+        text-align: center;
       }
 
       .footer-separator {
@@ -222,7 +230,7 @@
         .hero-title { font-size: 40px; }
         .hero-subtitle { font-size: 18px; }
 
-        .app-footer-inner {
+        .footer-bottom-row {
           flex-direction: column;
           text-align: center;
         }
@@ -252,25 +260,27 @@
 
       <footer class="app-footer">
         <div class="app-footer-inner">
-          <div class="footer-left">
-            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Lyzev. All rights reserved.</p>
-          </div>
-          <div class="footer-center">
-            <p class="footer-links">
-              <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
-              <span class="footer-separator">|</span>
-              <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a>
-              <span class="footer-separator">|</span>
-              <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">GitHub Terms</a>
-              <span class="footer-separator">|</span>
-              <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">Source Code License (AGPLv3)</a>
-            </p>
-            <p class="footer-cookie-note">
-              No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
-            </p>
-          </div>
-          <div class="footer-right">
-            <p>Wall-nut Hills</p>
+          <p class="footer-cookie-note">
+            No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
+          </p>
+          <div class="footer-bottom-row">
+            <div class="footer-left">
+              <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Lyzev. All rights reserved.</p>
+            </div>
+            <div class="footer-center">
+              <p class="footer-links">
+                <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
+                <span class="footer-separator">|</span>
+                <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a>
+                <span class="footer-separator">|</span>
+                <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" target="_blank" rel="noopener noreferrer">GitHub Terms</a>
+                <span class="footer-separator">|</span>
+                <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">Website Source Code (GNU AGPLv3)</a>
+              </p>
+            </div>
+            <div class="footer-right">
+              <p>Wall-nut Hills</p>
+            </div>
           </div>
         </div>
       </footer>
