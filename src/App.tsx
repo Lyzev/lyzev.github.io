@@ -19,10 +19,6 @@
 import { useState, useEffect, useRef, useCallback, type TransitionEvent } from 'react';
 import './App.css';
 
-type SharedFooterWindow = Window & {
-  renderSharedFooter?: (target: HTMLElement) => void;
-};
-
 const greetings = [
   "Hello", "Hola", "Bonjour", "Hallo", "Ciao", "Привет", "你好", "Olá", "مرحبا",
   "नमस्ते", "こんにちは", "안녕하세요", "Sawubona", "Salam", "Hej",
@@ -45,9 +41,6 @@ const projectRepoPaths = [
   "SchizoidDevelopment/piko"
 ];
 
-const SHARED_FOOTER_RENDER_MAX_ATTEMPTS = 20;
-const SHARED_FOOTER_RENDER_RETRY_DELAY_MS = 50;
-const SHARED_FOOTER_RENDER_TIMEOUT_MS = SHARED_FOOTER_RENDER_MAX_ATTEMPTS * SHARED_FOOTER_RENDER_RETRY_DELAY_MS;
 const KNOWN_ROUTE_PATHS = new Set(['/', '/index.html']);
 const SITE_TITLE = 'lyzev.dev';
 const NOT_FOUND_TITLE = '404 — lyzev.dev';
@@ -187,6 +180,33 @@ function PRCard({ title, description, url, status, date, highlight }: { title: s
   );
 }
 
+function Footer() {
+  return (
+    <footer className="app-footer">
+      <div className="app-footer-inner">
+        <p className="footer-cookie-note">
+          No cookies are used directly by this website. Traffic is served via Cloudflare CDN and GitHub Pages for distribution and security, and they may set their own cookies. Please refer to the Cloudflare <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>, Cloudflare <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and GitHub <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a> for details.
+        </p>
+        <div className="footer-bottom-row">
+          <div className="footer-left">
+            <p>Copyright &copy; {new Date().getFullYear()} Lyzev. All rights reserved.</p>
+          </div>
+          <div className="footer-center">
+            <p className="footer-links">
+              <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Hosted on GitHub Pages</a>
+              <span className="footer-separator">|</span>
+              <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">License</a>
+            </p>
+          </div>
+          <div className="footer-right">
+            <p>Wall-nut Hills</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 function App() {
   const isNotFoundRoute = isUnknownRoutePath(window.location.pathname);
   const [isLoading, setIsLoading] = useState(!isNotFoundRoute);
@@ -201,41 +221,10 @@ function App() {
   const imagesLoadedRef = useRef(false);
   const tickRef = useRef(1);
   const lastTextRef = useRef(loadingText);
-  const sharedFooterContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     document.title = isNotFoundRoute ? NOT_FOUND_TITLE : SITE_TITLE;
   }, [isNotFoundRoute]);
-
-  useEffect(() => {
-    if (!sharedFooterContainerRef.current) return;
-
-    let attempts = 0;
-    // Retry up to SHARED_FOOTER_RENDER_TIMEOUT_MS to allow the shared footer script to initialize.
-    const footerRenderIntervalId = window.setInterval(() => {
-      if (!sharedFooterContainerRef.current) {
-        window.clearInterval(footerRenderIntervalId);
-        return;
-      }
-
-      const renderSharedFooter = (window as SharedFooterWindow).renderSharedFooter;
-      if (!renderSharedFooter) {
-        attempts++;
-        if (attempts >= SHARED_FOOTER_RENDER_MAX_ATTEMPTS) {
-          window.clearInterval(footerRenderIntervalId);
-        }
-        return;
-      }
-
-      renderSharedFooter(sharedFooterContainerRef.current);
-      window.clearInterval(footerRenderIntervalId);
-    }, SHARED_FOOTER_RENDER_RETRY_DELAY_MS);
-    window.setTimeout(() => window.clearInterval(footerRenderIntervalId), SHARED_FOOTER_RENDER_TIMEOUT_MS);
-
-    return () => {
-      window.clearInterval(footerRenderIntervalId);
-    };
-  }, []);
 
   useEffect(() => {
     if (isNotFoundRoute) return;
@@ -410,7 +399,7 @@ function App() {
           </>
         )}
 
-        <div ref={sharedFooterContainerRef} />
+        <Footer />
       </div>
 
       {!isNotFoundRoute && isLoading && (
