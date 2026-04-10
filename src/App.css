@@ -156,7 +156,6 @@ body {
 }
 
 .section {
-  background-color: var(--color-bg);
   color: var(--color-text-main);
   padding: 60px 20px;
   display: flex;
