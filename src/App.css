@@ -219,6 +219,7 @@ body {
   align-items: center;
   text-decoration: none !important;
   color: var(--color-text-main);
+  border: 1px solid var(--color-border);
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
