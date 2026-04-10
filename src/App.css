@@ -69,21 +69,17 @@ body::after {
   position: fixed;
   inset: 0;
   background-image: url('/noise.svg');
-  opacity: 0.03;
+  opacity: 0.2;
   pointer-events: none;
-  z-index: 9998;
-}
-
-@media (prefers-color-scheme: dark) {
-  body::after {
-    opacity: 0.05;
-  }
+  z-index: 0;
 }
 
 .app-container {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .loader-container {
