@@ -64,22 +64,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::after {
+.app-container {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+.app-container::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url('/noise.svg');
   opacity: 0.2;
   pointer-events: none;
-  z-index: 0;
-}
-
-.app-container {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 1;
+  z-index: -1;
 }
 
 .loader-container {
