@@ -1,1 +1,7 @@
-This website is distributed under the AGPLv3 license. The license can be found in the `LICENSE` file or at the following link: [AGPLv3 License](https://www.gnu.org/licenses/agpl-3.0.html)
+# lyzev.dev
+
+Personal website of [Lyzev](https://github.com/Lyzev).
+
+Plain static HTML/CSS with no JavaScript.
+
+Licensed under the [AGPL-3.0](LICENSE).

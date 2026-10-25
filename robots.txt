@@ -37,8 +37,6 @@ User-agent: bingbot
 User-agent: BingPreview
 # bublup.com suggestion/search engine
 User-agent: BublupBot
-# commoncrawl.org open repository of web crawl data
-User-agent: CCBot
 # cliqz.com german in-product search engine
 User-agent: Cliqzbot
 # coccoc.com vietnamese search engine

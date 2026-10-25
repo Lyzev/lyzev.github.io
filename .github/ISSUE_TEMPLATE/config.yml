@@ -2,4 +2,7 @@ blank_issues_enabled: false
 contact_links:
   - name: Discord
     url: https://lyzev.dev/discord
-    about: For assistance with minor concerns, feel free to join our supportive community on the Discord server. Our friendly members and staff are ready to help you.
+    about: |
+      For quick questions and minor concerns. When you join: skip the "hello, anyone here?" —
+      just ask your complete question right away (https://nohello.net/en), and ask it directly
+      instead of asking to ask (https://dontasktoask.com). Include what you tried and what happened.
