@@ -1,0 +1,127 @@
+name: Bug Report
+description: File a bug report
+body:
+  - type: markdown
+    attributes:
+      value: |
+        <p align="center">
+          <a href="https://lyzev.github.io">
+            <h2>Lyzev's Personal Website Bug Report</h2>
+          </a>
+        </p>
+
+        <p align="center"><em>Thank you for filing a bug report!</em></p>
+
+        > [!IMPORTANT]
+        > Write a report that can be answered without a follow-up round-trip:
+        >
+        > - Provide a descriptive title. Bad titles do more harm than good.
+        > - Search existing issues first to avoid duplicates.
+        > - Describe the *goal* you were trying to achieve, not just the step that failed
+        >   (see [xyproblem.info](https://xyproblem.info)).
+        > - Include a short, self-contained, correct example of the problem
+        >   (see [sscce.org](https://sscce.org)) — numbered steps anyone can follow.
+        > - Include everything you tried and what happened, so nobody asks
+        >   "well, what have you tried?" (see [itdidnt.work](https://itdidnt.work)).
+        > - If you first want to discuss something, ask the full question directly —
+        >   don't ask to ask, and don't say just "hello" (see
+        >   [dontasktoask.com](https://dontasktoask.com) and [nohello.net](https://nohello.net/en)).
+        >   For guidance on asking well in general, read
+        >   [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html).
+  - type: checkboxes
+    id: captchas
+    attributes:
+      label: Preliminary Checks
+      description: Please confirm the following before submitting a bug report. This helps us triage and resolve issues more efficiently.
+      options:
+        - label: I have read and understood the important section above.
+          required: true
+        - label: I have searched existing issues and avoided creating duplicates.
+          required: true
+        - label: I am not filing an enhancement request.
+          required: true
+        - label: I have tested this across multiple browsers (if applicable).
+          required: false
+        - label: I have disabled browser extensions that might interfere with the website.
+          required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly and concisely.
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: input
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: Please write a description of what was supposed to happen.
+    validations:
+      required: true
+  - type: input
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: Please write a description of what actually happened.
+    validations:
+      required: true
+  - type: textarea
+    id: how-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Please Provide numbered steps to reproduce this issue so developers can replicate them easily.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots and videos
+      description: |
+        If applicable, add screenshots or videos to help explain your problem.
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Which browser are you using?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Mobile Browser
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: What operating system are you on?
+      multiple: true
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: What area of the site is this issue related to?
+      options:
+        - About Me Section
+        - Projects Section
+        - Open Source Contributions Section
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Browser Console Logs
+      description: Please copy and paste any relevant errors from the browser console (F12 or Inspect -> Console). This will be automatically formatted into code.
+      render: shell
